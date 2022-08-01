@@ -14,7 +14,7 @@ class _nameState extends State<HomePage> {
       body: Column(
         children: [
           Expanded(
-            flex: 3,
+            flex: 2,
             child: Container(
               color: Colors.blue,
             ),
