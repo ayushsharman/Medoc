@@ -11,15 +11,33 @@ class HomePage extends StatefulWidget {
 }
 
 class _nameState extends State<HomePage> {
-  double birdYaxis = 0;
+  static double birdYaxis = 0;
+  double time = 0;
+  double height = 0;
+  double initialHeight = birdYaxis;
+  bool gameHasStarted = false;
 
   void jump() {
+    setState(() {
+      time = 0;
+      initialHeight = birdYaxis;
+    });
+  }
+
+  void startGame() {
+    gameHasStarted = true;
     Timer.periodic(
-      Duration(milliseconds: 100),
+      Duration(milliseconds: 60),
       ((timer) {
+        time += 0.05;
+        height = -4.9 * time * time + 2.8 * time;
         setState(() {
-          birdYaxis -= 0.1;
+          birdYaxis = initialHeight - height;
         });
+        if (birdYaxis > 1) {
+          timer.cancel();
+          gameHasStarted = false;
+        }
       }),
     );
   }
@@ -30,9 +48,15 @@ class _nameState extends State<HomePage> {
       body: Column(
         children: [
           Expanded(
-            flex: 2,
+            flex: 3,
             child: GestureDetector(
-              onTap: jump,
+              onTap: () {
+                if (gameHasStarted) {
+                  jump();
+                } else {
+                  startGame();
+                }
+              },
               child: AnimatedContainer(
                 alignment: Alignment(0, birdYaxis),
                 duration: Duration(milliseconds: 0),
@@ -43,7 +67,21 @@ class _nameState extends State<HomePage> {
           ),
           Expanded(
             child: Container(
-              color: Colors.green,
+              color: Colors.brown,
+              child: Row(children: [
+                Column(
+                  children: [
+                    Text("SCORE"),
+                    Text("0"),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Text("BEST"),
+                    Text("10"),
+                  ],
+                ),
+              ]),
             ),
           )
         ],
