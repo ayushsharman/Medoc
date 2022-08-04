@@ -65,23 +65,52 @@ class _nameState extends State<HomePage> {
               ),
             ),
           ),
+          Container(
+            height: 15,
+            color: Colors.green,
+          ),
           Expanded(
             child: Container(
               color: Colors.brown,
-              child: Row(children: [
-                Column(
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text("SCORE"),
-                    Text("0"),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Text("BEST"),
-                    Text("10"),
-                  ],
-                ),
-              ]),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "SCORE",
+                          style: TextStyle(color: Colors.white, fontSize: 30),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          "0",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "BEST",
+                          style: TextStyle(color: Colors.white, fontSize: 30),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          "10",
+                          style: TextStyle(color: Colors.white, fontSize: 30),
+                        ),
+                      ],
+                    ),
+                  ]),
             ),
           )
         ],
