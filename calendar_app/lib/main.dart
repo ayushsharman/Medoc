@@ -1,3 +1,4 @@
+import 'package:calendar_app/calendar_widget.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SfCalendar(),
+      appBar: AppBar(
+        title: Text("Calendar Events App"),
+        centerTitle: true,
+      ),
+      body: CalendarWidget(),
     );
   }
 }
