@@ -8,6 +8,8 @@ class CalendarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SfCalendar(
       view: CalendarView.month,
+      initialSelectedDate: DateTime.now(),
+      cellBorderColor: Colors.transparent,
     );
   }
 }
