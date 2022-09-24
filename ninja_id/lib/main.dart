@@ -32,7 +32,11 @@ class _NinjaCardState extends State<NinjaCard> {
             },
           );
         },
-        child: Icon(Icons.add),
+        child: Icon(
+          Icons.run_circle,
+          size: 60,
+          color: Colors.amberAccent,
+        ),
         backgroundColor: Colors.grey[850],
       ),
       body: Padding(

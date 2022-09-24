@@ -12,6 +12,7 @@ class _CalendarState extends State<Calendar> {
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,10 +27,13 @@ class _CalendarState extends State<Calendar> {
           });
         },
         startingDayOfWeek: StartingDayOfWeek.monday,
-        onDaySelected: (DateTime selectDay, DateTime focusDay) => setState(() {
-          selectedDay = selectDay;
-          focusedDay = focusDay;
-        }, CalendarStyle()),
+        onDaySelected: (DateTime selectDay, DateTime focusDay) => setState(
+          () {
+            selectedDay = selectDay;
+            focusedDay = focusDay;
+          },
+          CalendarStyle(),
+        ),
       ),
     );
   }
