@@ -17,8 +17,8 @@ class _CalendarState extends State<Calendar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: TableCalendar(
+        focusedDay: selectedDay,
         firstDay: DateTime(1990),
-        focusedDay: DateTime.now(),
         lastDay: DateTime(2050),
         calendarFormat: format,
         onFormatChanged: (CalendarFormat _format) {
@@ -27,12 +27,24 @@ class _CalendarState extends State<Calendar> {
           });
         },
         startingDayOfWeek: StartingDayOfWeek.monday,
-        onDaySelected: (DateTime selectDay, DateTime focusDay) => setState(
-          () {
+        daysOfWeekVisible: true,
+        onDaySelected: (DateTime selectDay, DateTime focusDay) {
+          setState(() {
             selectedDay = selectDay;
             focusedDay = focusDay;
-          },
-          CalendarStyle(),
+          });
+          print(focusedDay);
+        },
+        selectedDayPredicate: (DateTime date) {
+          return isSameDay(selectedDay, date);
+        },
+        calendarStyle: CalendarStyle(
+          isTodayHighlighted: true,
+          selectedDecoration: BoxDecoration(
+            color: Colors.blue,
+            shape: BoxShape.circle,
+          ),
+          selectedTextStyle: TextStyle(color: Colors.white),
         ),
       ),
     );
