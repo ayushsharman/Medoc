@@ -56,6 +56,9 @@ class _CalendarState extends State<Calendar> {
               borderRadius: BorderRadius.circular(10.0)),
           selectedTextStyle: TextStyle(color: Colors.white),
         ),
+        headerStyle: const HeaderStyle(
+          titleCentered: true,
+        ),
       ),
     );
   }
