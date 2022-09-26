@@ -17,6 +17,7 @@ class _CalendarState extends State<Calendar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 31, 87, 118),
         title: Text("MEDOC Calendar"),
         centerTitle: true,
       ),
