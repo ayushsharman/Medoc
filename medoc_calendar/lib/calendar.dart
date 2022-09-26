@@ -16,6 +16,10 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("MEDOC Calendar"),
+        centerTitle: true,
+      ),
       body: TableCalendar(
         focusedDay: selectedDay,
         firstDay: DateTime(1990),
@@ -40,10 +44,15 @@ class _CalendarState extends State<Calendar> {
         },
         calendarStyle: CalendarStyle(
           isTodayHighlighted: true,
-          selectedDecoration: BoxDecoration(
-            color: Colors.blue,
-            shape: BoxShape.circle,
+          todayDecoration: BoxDecoration(
+            color: Color.fromARGB(255, 69, 197, 219),
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(10.0),
           ),
+          selectedDecoration: BoxDecoration(
+              color: Color.fromARGB(255, 31, 87, 118),
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(10.0)),
           selectedTextStyle: TextStyle(color: Colors.white),
         ),
       ),
