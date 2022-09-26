@@ -38,7 +38,6 @@ class _CalendarState extends State<Calendar> {
             selectedDay = selectDay;
             focusedDay = focusDay;
           });
-          print(focusedDay);
         },
         selectedDayPredicate: (DateTime date) {
           return isSameDay(selectedDay, date);
@@ -57,6 +56,7 @@ class _CalendarState extends State<Calendar> {
           selectedTextStyle: TextStyle(color: Colors.white),
         ),
         headerStyle: const HeaderStyle(
+          formatButtonVisible: false,
           titleCentered: true,
         ),
       ),
