@@ -21,44 +21,55 @@ class _CalendarState extends State<Calendar> {
         title: Text("MEDOC Calendar"),
         centerTitle: true,
       ),
-      body: TableCalendar(
-        focusedDay: selectedDay,
-        firstDay: DateTime(1990),
-        lastDay: DateTime(2050),
-        calendarFormat: format,
-        onFormatChanged: (CalendarFormat _format) {
-          setState(() {
-            format = _format;
-          });
-        },
-        startingDayOfWeek: StartingDayOfWeek.monday,
-        daysOfWeekVisible: true,
-        onDaySelected: (DateTime selectDay, DateTime focusDay) {
-          setState(() {
-            selectedDay = selectDay;
-            focusedDay = focusDay;
-          });
-        },
-        selectedDayPredicate: (DateTime date) {
-          return isSameDay(selectedDay, date);
-        },
-        calendarStyle: CalendarStyle(
-          isTodayHighlighted: true,
-          todayDecoration: BoxDecoration(
-            color: Color.fromARGB(255, 69, 197, 219),
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(10.0),
+      body: Row(
+        children: [
+          Expanded(
+            child: Card(
+              child: Text("Hi this is cards here"),
+            ),
           ),
-          selectedDecoration: BoxDecoration(
-              color: Color.fromARGB(255, 31, 87, 118),
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(10.0)),
-          selectedTextStyle: TextStyle(color: Colors.white),
-        ),
-        headerStyle: const HeaderStyle(
-          formatButtonVisible: false,
-          titleCentered: true,
-        ),
+          Expanded(
+            child: TableCalendar(
+              focusedDay: selectedDay,
+              firstDay: DateTime(1990),
+              lastDay: DateTime(2050),
+              calendarFormat: format,
+              onFormatChanged: (CalendarFormat _format) {
+                setState(() {
+                  format = _format;
+                });
+              },
+              startingDayOfWeek: StartingDayOfWeek.monday,
+              daysOfWeekVisible: true,
+              onDaySelected: (DateTime selectDay, DateTime focusDay) {
+                setState(() {
+                  selectedDay = selectDay;
+                  focusedDay = focusDay;
+                });
+              },
+              selectedDayPredicate: (DateTime date) {
+                return isSameDay(selectedDay, date);
+              },
+              calendarStyle: CalendarStyle(
+                isTodayHighlighted: true,
+                todayDecoration: BoxDecoration(
+                  color: Color.fromARGB(255, 69, 197, 219),
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                selectedDecoration: BoxDecoration(
+                    color: Color.fromARGB(255, 31, 87, 118),
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(10.0)),
+                selectedTextStyle: TextStyle(color: Colors.white),
+              ),
+              headerStyle: const HeaderStyle(
+                formatButtonVisible: false,
+                titleCentered: true,
+              ),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
