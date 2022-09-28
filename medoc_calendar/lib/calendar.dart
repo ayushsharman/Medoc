@@ -60,6 +60,13 @@ class _CalendarState extends State<Calendar> {
           titleCentered: true,
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(
+          Icons.add,
+        ),
+        backgroundColor: Color.fromARGB(255, 31, 87, 118),
+      ),
     );
   }
 }
