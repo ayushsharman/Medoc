@@ -57,14 +57,26 @@ class _CalendarState extends State<Calendar> {
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(10.0),
                 ),
+                defaultDecoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(10.0)),
+                weekendDecoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(10.0)),
+                outsideDecoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(10.0)),
                 selectedDecoration: BoxDecoration(
                     color: Color.fromARGB(255, 31, 87, 118),
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.circular(10.0)),
                 selectedTextStyle: TextStyle(color: Colors.white),
               ),
-              headerStyle: const HeaderStyle(
-                formatButtonVisible: false,
+              headerStyle: HeaderStyle(
+                formatButtonDecoration: BoxDecoration(
+                    color: Color.fromARGB(255, 69, 197, 219),
+                    borderRadius: BorderRadius.circular(10.0)),
+                formatButtonTextStyle: TextStyle(color: Colors.white),
                 titleCentered: true,
               ),
             ),
