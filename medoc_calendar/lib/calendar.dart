@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medoc_calendar/event.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class Calendar extends StatefulWidget {
@@ -9,9 +10,28 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
+  Map<DateTime, List<Event>> selectedEvents = {};
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
+
+  TextEditingController _eventController = TextEditingController();
+
+  @override
+  void initState() {
+    selectedEvents = {};
+    super.initState();
+  }
+
+  @override
+  void disppose() {
+    _eventController.dispose();
+    super.dispose();
+  }
+
+  List<Event> _getEventsfromDay(DateTime date) {
+    return selectedEvents[date] ?? [];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +70,7 @@ class _CalendarState extends State<Calendar> {
               selectedDayPredicate: (DateTime date) {
                 return isSameDay(selectedDay, date);
               },
+              eventLoader: _getEventsfromDay,
               calendarStyle: CalendarStyle(
                 isTodayHighlighted: true,
                 todayDecoration: BoxDecoration(
@@ -84,7 +105,36 @@ class _CalendarState extends State<Calendar> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text("Add Event"),
+            content: TextFormField(
+              controller: _eventController,
+            ),
+            actions: [
+              TextButton(
+                child: Text("Ok"),
+                onPressed: () {
+                  if (_eventController.text.isEmpty) {
+                    Navigator.pop(context);
+                    return;
+                  } else {
+                    if (selectedEvents[selectedDay] != null) {
+                      selectedEvents[selectedDay].add(
+                        Event(title: _eventController.text),
+                      );
+                    }
+                  }
+                },
+              ),
+              TextButton(
+                child: Text("Cancel"),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ],
+          ),
+        ),
         child: Icon(
           Icons.add,
         ),
