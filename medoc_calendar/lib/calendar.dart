@@ -11,26 +11,11 @@ class Calendar extends StatefulWidget {
 
 Widget Eventslist() {
   return Card(
-    margin: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
-    child: Padding(
-      padding: const EdgeInsets.all(30.0),
-      child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Text(
-              "Title Text",
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(
-              height: 6.0,
-            ),
-            Text(
-              "Title Text",
-              style: TextStyle(fontSize: 18),
-            ),
-          ],
-        ),
+    margin: EdgeInsets.fromLTRB(16, 16, 16, 16),
+    child: Text(
+      "Hi this is cards here",
+      style: TextStyle(
+        fontSize: 20,
       ),
     ),
   );
