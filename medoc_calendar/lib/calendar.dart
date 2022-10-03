@@ -9,22 +9,33 @@ class Calendar extends StatefulWidget {
   State<Calendar> createState() => _CalendarState();
 }
 
+Widget Eventslist() {
+  return Card(
+    child: Text(
+      "Title",
+      style: TextStyle(fontSize: 18),
+    ),
+    margin: EdgeInsets.symmetric(),
+    color: Colors.red,
+  );
+}
+
 class _CalendarState extends State<Calendar> {
-  Map<DateTime, List<Event>> selectedEvents = {};
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
 
   TextEditingController _eventController = TextEditingController();
 
+  Map<DateTime, List<Event>> selectedEvents = {};
   @override
   void initState() {
-    selectedEvents = {};
     super.initState();
+    selectedEvents = {};
   }
 
   @override
-  void disppose() {
+  void dispose() {
     _eventController.dispose();
     super.dispose();
   }
@@ -44,8 +55,10 @@ class _CalendarState extends State<Calendar> {
       body: Row(
         children: [
           Expanded(
-            child: Card(
-              child: Text("Hi this is cards here"),
+            child: Column(
+              children: [
+                Eventslist(),
+              ],
             ),
           ),
           Expanded(
@@ -119,12 +132,6 @@ class _CalendarState extends State<Calendar> {
                   if (_eventController.text.isEmpty) {
                     Navigator.pop(context);
                     return;
-                  } else {
-                    if (selectedEvents[selectedDay] != null) {
-                      selectedEvents[selectedDay].add(
-                        Event(title: _eventController.text),
-                      );
-                    }
                   }
                 },
               ),
