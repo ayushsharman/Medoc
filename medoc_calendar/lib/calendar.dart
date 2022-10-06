@@ -59,57 +59,63 @@ class _CalendarState extends State<Calendar> {
             child: Eventslist(),
           ),
           Expanded(
-            child: TableCalendar(
-              focusedDay: selectedDay,
-              firstDay: DateTime(1990),
-              lastDay: DateTime(2050),
-              calendarFormat: format,
-              onFormatChanged: (CalendarFormat _format) {
-                setState(() {
-                  format = _format;
-                });
-              },
-              startingDayOfWeek: StartingDayOfWeek.monday,
-              daysOfWeekVisible: true,
-              onDaySelected: (DateTime selectDay, DateTime focusDay) {
-                setState(() {
-                  selectedDay = selectDay;
-                  focusedDay = focusDay;
-                });
-              },
-              selectedDayPredicate: (DateTime date) {
-                return isSameDay(selectedDay, date);
-              },
-              eventLoader: _getEventsfromDay,
-              calendarStyle: CalendarStyle(
-                isTodayHighlighted: true,
-                todayDecoration: BoxDecoration(
-                  color: Color.fromARGB(255, 69, 197, 219),
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(10.0),
+            child: Column(
+              children: [
+                TableCalendar(
+                  focusedDay: selectedDay,
+                  firstDay: DateTime(1990),
+                  lastDay: DateTime(2050),
+                  calendarFormat: format,
+                  onFormatChanged: (CalendarFormat _format) {
+                    setState(() {
+                      format = _format;
+                    });
+                  },
+                  startingDayOfWeek: StartingDayOfWeek.monday,
+                  daysOfWeekVisible: true,
+                  onDaySelected: (DateTime selectDay, DateTime focusDay) {
+                    setState(() {
+                      selectedDay = selectDay;
+                      focusedDay = focusDay;
+                    });
+                  },
+                  selectedDayPredicate: (DateTime date) {
+                    return isSameDay(selectedDay, date);
+                  },
+                  eventLoader: _getEventsfromDay,
+                  calendarStyle: CalendarStyle(
+                    isTodayHighlighted: true,
+                    todayDecoration: BoxDecoration(
+                      color: Color.fromARGB(255, 69, 197, 219),
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    defaultDecoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(10.0)),
+                    weekendDecoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(10.0)),
+                    outsideDecoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(10.0)),
+                    selectedDecoration: BoxDecoration(
+                        color: Color.fromARGB(255, 31, 87, 118),
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(10.0)),
+                    selectedTextStyle: TextStyle(color: Colors.white),
+                  ),
+                  headerStyle: HeaderStyle(
+                    formatButtonDecoration: BoxDecoration(
+                        color: Color.fromARGB(255, 69, 197, 219),
+                        borderRadius: BorderRadius.circular(10.0)),
+                    formatButtonTextStyle: TextStyle(color: Colors.white),
+                    titleCentered: true,
+                  ),
                 ),
-                defaultDecoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(10.0)),
-                weekendDecoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(10.0)),
-                outsideDecoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(10.0)),
-                selectedDecoration: BoxDecoration(
-                    color: Color.fromARGB(255, 31, 87, 118),
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(10.0)),
-                selectedTextStyle: TextStyle(color: Colors.white),
-              ),
-              headerStyle: HeaderStyle(
-                formatButtonDecoration: BoxDecoration(
-                    color: Color.fromARGB(255, 69, 197, 219),
-                    borderRadius: BorderRadius.circular(10.0)),
-                formatButtonTextStyle: TextStyle(color: Colors.white),
-                titleCentered: true,
-              ),
+                ..._getEventsfromDay(selectedDay)
+                    .map((Event event) => ListTile(title: Text(event.title))),
+              ],
             ),
           ),
         ],
@@ -127,9 +133,19 @@ class _CalendarState extends State<Calendar> {
                 child: Text("Ok"),
                 onPressed: () {
                   if (_eventController.text.isEmpty) {
-                    Navigator.pop(context);
-                    return;
+                  } else {
+                    // if (selectedEvents[selectedDay] != null) {
+                    //   selectedEvents[selectedDay].add(
+                    //     Event(title: _eventController.text),
+                    //   );
+                    selectedEvents[selectedDay] = [
+                      Event(title: _eventController.text)
+                    ];
                   }
+                  Navigator.pop(context);
+                  _eventController.clear();
+                  setState(() {});
+                  return;
                 },
               ),
               TextButton(
