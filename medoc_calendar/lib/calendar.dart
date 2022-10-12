@@ -9,41 +9,10 @@ class Calendar extends StatefulWidget {
   State<Calendar> createState() => _CalendarState();
 }
 
-Widget Eventslist() {
-  return Card(
-    margin: EdgeInsets.fromLTRB(16, 16, 16, 16),
-    child: Text(
-      "Hi this is cards here",
-      style: TextStyle(
-        fontSize: 20,
-      ),
-    ),
-  );
-}
-
 class _CalendarState extends State<Calendar> {
   CalendarFormat format = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
-
-  TextEditingController _eventController = TextEditingController();
-
-  Map<DateTime, List<Event>> selectedEvents = {};
-  @override
-  void initState() {
-    super.initState();
-    selectedEvents = {};
-  }
-
-  @override
-  void dispose() {
-    _eventController.dispose();
-    super.dispose();
-  }
-
-  List<Event> _getEventsfromDay(DateTime date) {
-    return selectedEvents[date] ?? [];
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +48,6 @@ class _CalendarState extends State<Calendar> {
               selectedDayPredicate: (DateTime date) {
                 return isSameDay(selectedDay, date);
               },
-              eventLoader: _getEventsfromDay,
               calendarStyle: CalendarStyle(
                 isTodayHighlighted: true,
                 todayDecoration: BoxDecoration(
@@ -111,41 +79,15 @@ class _CalendarState extends State<Calendar> {
               ),
             ),
           ),
-          ..._getEventsfromDay(selectedDay)
-              .map((Event event) => ListTile(title: Text(event.title))),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: Text("Add Event"),
-            content: TextFormField(
-              controller: _eventController,
-            ),
-            actions: [
-              TextButton(
-                child: Text("Ok"),
-                onPressed: () {
-                  if (_eventController.text.isEmpty) {
-                  } else {
-                    selectedEvents[selectedDay] = [
-                      Event(title: _eventController.text)
-                    ];
-                  }
-                  Navigator.pop(context);
-                  _eventController.clear();
-                  setState(() {});
-                  return;
-                },
-              ),
-              TextButton(
-                child: Text("Cancel"),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ],
-          ),
-        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddEvent()),
+          );
+        },
         child: Icon(
           Icons.add,
         ),
