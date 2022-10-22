@@ -32,8 +32,13 @@ class _AddEventState extends State<AddEvent> {
               child: Text(
                 "Save",
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
+                    color: Colors.white,
+                    fontSize: 20,
+                    backgroundColor: Colors.transparent),
+              ),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  Color.fromARGB(255, 69, 197, 219),
                 ),
               ),
             ),
