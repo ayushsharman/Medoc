@@ -38,7 +38,7 @@ class _AddEventState extends State<AddEvent> {
               ),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
-                  Color.fromARGB(255, 69, 197, 219),
+                  Color.fromARGB(255, 31, 87, 118),
                 ),
               ),
             ),
