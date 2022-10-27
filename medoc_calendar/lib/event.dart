@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:intl/intl.dart';
 
 class AddEvent extends StatefulWidget {
   const AddEvent({Key? key}) : super(key: key);
@@ -82,6 +83,7 @@ class _AddEventState extends State<AddEvent> {
                 initialValue: DateTime.now(),
                 fieldHintText: "Add Date",
                 inputType: InputType.date,
+                format: DateFormat('yyyy-MM-dd'),
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   icon: Icon(Icons.calendar_today_sharp),
