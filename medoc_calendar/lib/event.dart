@@ -10,7 +10,6 @@ class AddEvent extends StatefulWidget {
 }
 
 class _AddEventState extends State<AddEvent> {
-  final _formKey = GlobalKey<FormBuilderState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +82,7 @@ class _AddEventState extends State<AddEvent> {
                 initialValue: DateTime.now(),
                 fieldHintText: "Add Date",
                 inputType: InputType.date,
-                format: DateFormat('yyyy-MM-dd'),
+                format: DateFormat('EEEE, dd MMMM, yyyy'),
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   icon: Icon(Icons.calendar_today_sharp),
