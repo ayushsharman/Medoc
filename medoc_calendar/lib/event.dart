@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
 
 class AddEvent extends StatefulWidget {
   const AddEvent({Key? key}) : super(key: key);
@@ -34,6 +33,11 @@ class _AddEventState extends State<AddEvent> {
               onPressed: () async {
                 if (_formkey.currentState!.validate()) {
                   _formkey.currentState?.save();
+                  final data =
+                      Map<String, dynamic>.from(_formkey.currentState!.value);
+                  data['date'] =
+                      (data['date'] as DateTime).microsecondsSinceEpoch;
+                  print(data);
                 }
               },
               child: Text(
@@ -62,7 +66,7 @@ class _AddEventState extends State<AddEvent> {
                   FormBuilderTextField(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Text can not be empty';
+                        return 'Field can not be empty';
                       }
                     },
                     name: "Title",
