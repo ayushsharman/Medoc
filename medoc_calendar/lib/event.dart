@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 
 class AddEvent extends StatefulWidget {
   const AddEvent({Key? key}) : super(key: key);
@@ -95,6 +96,9 @@ class _AddEventState extends State<AddEvent> {
                   ),
                   Divider(),
                   FormBuilderDateTimePicker(
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(),
+                    ]),
                     name: "Date",
                     initialValue: DateTime.now(),
                     fieldHintText: "Add Date",
