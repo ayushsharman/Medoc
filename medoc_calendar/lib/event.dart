@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 
 class AddEvent extends StatefulWidget {
   const AddEvent({Key? key}) : super(key: key);
@@ -10,6 +11,8 @@ class AddEvent extends StatefulWidget {
 }
 
 class _AddEventState extends State<AddEvent> {
+  final _formkey = GlobalKey<FormBuilderState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +31,11 @@ class _AddEventState extends State<AddEvent> {
         actions: [
           Center(
             child: ElevatedButton(
-              onPressed: () async {},
+              onPressed: () async {
+                if (_formkey.currentState!.validate()) {
+                  _formkey.currentState?.save();
+                }
+              },
               child: Text(
                 "Save",
                 style: TextStyle(
@@ -49,47 +56,53 @@ class _AddEventState extends State<AddEvent> {
         padding: const EdgeInsets.all(16),
         children: <Widget>[
           FormBuilder(
+              key: _formkey,
               child: Column(
-            children: [
-              FormBuilderTextField(
-                name: "Title",
-                decoration: InputDecoration(
-                    hintText: "Add Title of the event",
-                    border: InputBorder.none,
-                    contentPadding: const EdgeInsets.all(8)),
-              ),
-              Divider(),
-              FormBuilderTextField(
-                name: "Description",
-                maxLines: 5,
-                minLines: 1,
-                decoration: InputDecoration(
-                  hintText: "Add Description of the event",
-                  prefixIcon: Icon(Icons.short_text),
-                ),
-              ),
-              Divider(),
-              FormBuilderSwitch(
-                name: "Public",
-                title: Text("Public"),
-                initialValue: false,
-                controlAffinity: ListTileControlAffinity.leading,
-                decoration: InputDecoration(border: InputBorder.none),
-              ),
-              Divider(),
-              FormBuilderDateTimePicker(
-                name: "Date",
-                initialValue: DateTime.now(),
-                fieldHintText: "Add Date",
-                inputType: InputType.date,
-                format: DateFormat('EEEE, dd MMMM, yyyy'),
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  icon: Icon(Icons.calendar_today_sharp),
-                ),
-              ),
-            ],
-          ))
+                children: [
+                  FormBuilderTextField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Text can not be empty';
+                      }
+                    },
+                    name: "Title",
+                    decoration: InputDecoration(
+                        hintText: "Add Title of the event",
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.all(8)),
+                  ),
+                  Divider(),
+                  FormBuilderTextField(
+                    name: "Description",
+                    maxLines: 5,
+                    minLines: 1,
+                    decoration: InputDecoration(
+                      hintText: "Add Description of the event",
+                      prefixIcon: Icon(Icons.short_text),
+                    ),
+                  ),
+                  Divider(),
+                  FormBuilderSwitch(
+                    name: "Public",
+                    title: Text("Public"),
+                    initialValue: false,
+                    controlAffinity: ListTileControlAffinity.leading,
+                    decoration: InputDecoration(border: InputBorder.none),
+                  ),
+                  Divider(),
+                  FormBuilderDateTimePicker(
+                    name: "Date",
+                    initialValue: DateTime.now(),
+                    fieldHintText: "Add Date",
+                    inputType: InputType.date,
+                    format: DateFormat('EEEE, dd MMMM, yyyy'),
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      icon: Icon(Icons.calendar_today_sharp),
+                    ),
+                  ),
+                ],
+              ))
         ],
       ),
     );
