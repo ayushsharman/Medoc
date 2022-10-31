@@ -36,8 +36,7 @@ class _AddEventState extends State<AddEvent> {
                   _formkey.currentState?.save();
                   final data =
                       Map<String, dynamic>.from(_formkey.currentState!.value);
-                  data['date'] =
-                      (data['date'] as DateTime).microsecondsSinceEpoch;
+                  data['date'] = (data['data']?.millisecondsSinceEpoch) ?? 0;
                 }
               },
               child: Text(
