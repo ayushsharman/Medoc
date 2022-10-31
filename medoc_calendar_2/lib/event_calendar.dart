@@ -24,7 +24,6 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
   void initState() {
     super.initState();
     _selectedDate = _focusedDay;
-
     loadPreviousEvents();
   }
 
