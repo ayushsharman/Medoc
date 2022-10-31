@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
@@ -23,7 +22,6 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _selectedDate = _focusedDay;
 
@@ -98,9 +96,6 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                 //Navigator.pop(context);
                 return;
               } else {
-                print(titleController.text);
-                print(descpController.text);
-
                 setState(() {
                   if (mySelectedEvents[
                           DateFormat('yyyy-MM-dd').format(_selectedDate!)] !=
@@ -121,9 +116,6 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                     ];
                   }
                 });
-
-                print(
-                    "New Event for backend developer ${json.encode(mySelectedEvents)}");
                 titleController.clear();
                 descpController.clear();
                 Navigator.pop(context);
