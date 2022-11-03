@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
@@ -133,7 +132,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Medoc Calendar'),
-        backgroundColor: Color.fromARGB(255, 31, 87, 118),
+        backgroundColor: const Color.fromARGB(255, 31, 87, 118),
       ),
       body: Column(
         children: [
@@ -165,7 +164,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
             calendarStyle: CalendarStyle(
               isTodayHighlighted: true,
               todayDecoration: BoxDecoration(
-                color: Color.fromARGB(255, 69, 197, 219),
+                color: const Color.fromARGB(255, 69, 197, 219),
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(10.0),
               ),
@@ -179,16 +178,16 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(10.0)),
               selectedDecoration: BoxDecoration(
-                  color: Color.fromARGB(255, 31, 87, 118),
+                  color: const Color.fromARGB(255, 31, 87, 118),
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(10.0)),
-              selectedTextStyle: TextStyle(color: Colors.white),
+              selectedTextStyle: const TextStyle(color: Colors.white),
             ),
             headerStyle: HeaderStyle(
               formatButtonDecoration: BoxDecoration(
-                  color: Color.fromARGB(255, 69, 197, 219),
+                  color: const Color.fromARGB(255, 69, 197, 219),
                   borderRadius: BorderRadius.circular(10.0)),
-              formatButtonTextStyle: TextStyle(color: Colors.white),
+              formatButtonTextStyle: const TextStyle(color: Colors.white),
               titleCentered: true,
             ),
             onPageChanged: (focusedDay) {
@@ -214,10 +213,10 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddEventDialog(),
-        child: Icon(
+        backgroundColor: const Color.fromARGB(255, 31, 87, 118),
+        child: const Icon(
           Icons.add,
         ),
-        backgroundColor: Color.fromARGB(255, 31, 87, 118),
       ),
     );
   }
