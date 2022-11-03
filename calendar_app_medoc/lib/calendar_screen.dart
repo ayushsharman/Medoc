@@ -132,7 +132,8 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Event Calendar Example'),
+        title: const Text('Medoc Calendar'),
+        backgroundColor: Color.fromARGB(255, 31, 87, 118),
       ),
       body: Column(
         children: [
@@ -161,6 +162,35 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
                 });
               }
             },
+            calendarStyle: CalendarStyle(
+              isTodayHighlighted: true,
+              todayDecoration: BoxDecoration(
+                color: Color.fromARGB(255, 69, 197, 219),
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              defaultDecoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(10.0)),
+              weekendDecoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(10.0)),
+              outsideDecoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(10.0)),
+              selectedDecoration: BoxDecoration(
+                  color: Color.fromARGB(255, 31, 87, 118),
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(10.0)),
+              selectedTextStyle: TextStyle(color: Colors.white),
+            ),
+            headerStyle: HeaderStyle(
+              formatButtonDecoration: BoxDecoration(
+                  color: Color.fromARGB(255, 69, 197, 219),
+                  borderRadius: BorderRadius.circular(10.0)),
+              formatButtonTextStyle: TextStyle(color: Colors.white),
+              titleCentered: true,
+            ),
             onPageChanged: (focusedDay) {
               // No need to call `setState()` here
               _focusedDay = focusedDay;
@@ -171,7 +201,7 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
             (myEvents) => ListTile(
               leading: const Icon(
                 Icons.done,
-                color: Colors.teal,
+                color: Colors.red,
               ),
               title: Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
@@ -182,9 +212,12 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton.extended(
+      floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddEventDialog(),
-        label: const Text('Add Event'),
+        child: Icon(
+          Icons.add,
+        ),
+        backgroundColor: Color.fromARGB(255, 31, 87, 118),
       ),
     );
   }
