@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
@@ -18,6 +19,9 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
 
   final titleController = TextEditingController();
   final descpController = TextEditingController();
+
+  @override
+  void changeState() {}
 
   @override
   void initState() {
@@ -200,11 +204,17 @@ class _EventCalendarScreenState extends State<EventCalendarScreen> {
             (myEvents) => ListTile(
               leading: const Icon(
                 Icons.done,
-                color: Colors.red,
+                color: const Color.fromARGB(255, 31, 87, 118),
               ),
               title: Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text('Event Title:   ${myEvents['eventTitle']}'),
+                child: RichText(
+                  text: TextSpan(
+                    text: 'Event Title:   ${myEvents['eventTitle']}',
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () => changeState(),
+                  ),
+                ),
               ),
               subtitle: Text('Description:   ${myEvents['eventDescp']}'),
             ),
