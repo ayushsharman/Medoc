@@ -3,10 +3,8 @@ import 'package:janajal_clone/login.dart';
 
 void main() {
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     initialRoute: 'login',
-    routes: {
-      'login': (context) =>const loginPage()
-    },
+    routes: {'login': (context) => loginPage()},
   ));
 }
-
