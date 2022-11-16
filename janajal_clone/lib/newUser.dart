@@ -1,15 +1,17 @@
-// ignore_for_file: prefer_const_constructors
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:janajal_clone/home.dart';
-import 'package:janajal_clone/newUser.dart';
+// ignore_for_file: camel_case_types
 
-class loginPage extends StatefulWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+import 'package:janajal_clone/home.dart';
+
+class newUser extends StatefulWidget {
+  const newUser({super.key});
+
   @override
-  _LoginDemoState createState() => _LoginDemoState();
+  State<newUser> createState() => _newUserState();
 }
 
-class _LoginDemoState extends State<loginPage> {
+class _newUserState extends State<newUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -201,16 +203,11 @@ class _LoginDemoState extends State<loginPage> {
                 children: <TextSpan>[
                   TextSpan(text: 'New User?'),
                   TextSpan(
-                    text: ' Sign Up!',
-                    style: TextStyle(
-                      color: Colors.blue[400],
-                    ),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => newUser()));
-                      },
-                  ),
+                      text: ' Sign Up!',
+                      style: TextStyle(
+                        color: Colors.blue[400],
+                      ),
+                      recognizer: TapGestureRecognizer()..onTap = () {}),
                 ],
               ),
             ),
