@@ -1,8 +1,8 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import 'package:janajal_clone/home.dart';
+import 'package:janajal_clone/pages/home.dart';
 
 class newUser extends StatefulWidget {
   const newUser({super.key});

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:janajal_clone/home.dart';
+import 'package:janajal_clone/pages/home.dart';
 import 'package:janajal_clone/newUser.dart';
 
 class loginPage extends StatefulWidget {
