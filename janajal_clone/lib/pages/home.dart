@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables, unnecessary_new
 
 import 'package:flutter/material.dart';
 import 'package:janajal_clone/utils/icons.dart';
@@ -72,8 +72,46 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.blueAccent[100],
+                  boxShadow: [
+                    BoxShadow(
+                      spreadRadius: 5,
+                      blurRadius: 15,
+                      color: Color.fromARGB(255, 213, 213, 213),
+                    ),
+                  ],
                 ),
-                height: 200,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 150,
+                      decoration: new BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            spreadRadius: 2,
+                            blurRadius: 15,
+                            color: Color.fromARGB(98, 0, 0, 0),
+                          ),
+                        ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(25.0),
+                        child: Image.asset(
+                          'assets/atm card.png',
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "Prepaid Card",
+                      style: TextStyle(
+                        color: Colors.white,
+                        backgroundColor: Colors.blue[700],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             Padding(
