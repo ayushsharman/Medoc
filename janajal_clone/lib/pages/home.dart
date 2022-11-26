@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:janajal_clone/utils/icons.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(
-              height: 25,
+              height: 10,
             ),
             SmoothPageIndicator(
               controller: _controller,
@@ -40,10 +41,10 @@ class _HomePageState extends State<HomePage> {
               effect: const WormEffect(),
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               // ignore: prefer_const_literals_to_create_immutables
               children: [
                 iconButton(
@@ -65,9 +66,6 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.orange,
                 ),
               ],
-            ),
-            SizedBox(
-              height: 5,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -91,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Container(
-                            height: 100,
+                            height: 90,
                             width: 150,
                             decoration: new BoxDecoration(
                               color: Colors.white,
@@ -155,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Container(
-                            height: 100,
+                            height: 90,
                             width: 150,
                             decoration: new BoxDecoration(
                               color: Colors.white,
@@ -199,9 +197,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            SizedBox(
-              height: 5,
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -224,7 +219,7 @@ class _HomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Container(
-                            height: 100,
+                            height: 90,
                             width: 150,
                             decoration: new BoxDecoration(
                               color: Colors.white,
@@ -288,7 +283,7 @@ class _HomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Container(
-                            height: 100,
+                            height: 90,
                             width: 150,
                             decoration: new BoxDecoration(
                               color: Colors.white,
@@ -337,6 +332,33 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: GNav(
+        padding: EdgeInsets.all(20),
+        gap: 8,
+        tabBackgroundColor: Color.fromARGB(64, 3, 168, 244),
+        tabs: [
+          GButton(
+            icon: Icons.home,
+            iconColor: Colors.blue,
+            text: "Home",
+          ),
+          GButton(
+            icon: Icons.local_shipping_sharp,
+            iconColor: Colors.blue,
+            text: "Orders",
+          ),
+          GButton(
+            icon: Icons.account_balance_wallet_sharp,
+            iconColor: Colors.blue,
+            text: "Wallet",
+          ),
+          GButton(
+            icon: Icons.account_circle_sharp,
+            iconColor: Colors.blue,
+            text: "Profile",
+          ),
+        ],
       ),
     );
   }
