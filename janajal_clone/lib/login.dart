@@ -207,8 +207,12 @@ class _LoginDemoState extends State<loginPage> {
                     ),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => newUser()));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => newUser(),
+                          ),
+                        );
                       },
                   ),
                 ],
