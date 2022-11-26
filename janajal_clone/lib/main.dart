@@ -8,7 +8,7 @@ void main() {
     initialRoute: 'login',
     routes: {
       'login': (context) => loginPage(),
-      'newUser': (context) => newUser(),
+      'newUser': (context) => const newUser(),
     },
   ));
 }
