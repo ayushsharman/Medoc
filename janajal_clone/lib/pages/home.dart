@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables, unnecessary_new
 
 import 'package:flutter/material.dart';
-import 'package:janajal_clone/pages/order.dart';
 import 'package:janajal_clone/utils/icons.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -341,12 +340,7 @@ class _HomePageState extends State<HomePage> {
         tabs: [
           GButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => HomePage(),
-                ),
-              );
+              Navigator.pushNamed(context, 'homePage');
             },
             icon: Icons.home,
             iconColor: Colors.blue,
@@ -354,12 +348,7 @@ class _HomePageState extends State<HomePage> {
           ),
           GButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => OrderPage(),
-                ),
-              );
+              Navigator.pushNamed(context, 'order');
             },
             icon: Icons.local_shipping_sharp,
             iconColor: Colors.blue,
@@ -371,6 +360,9 @@ class _HomePageState extends State<HomePage> {
             text: "Wallet",
           ),
           GButton(
+            onPressed: () {
+              Navigator.pushNamed(context, 'profile');
+            },
             icon: Icons.account_circle_sharp,
             iconColor: Colors.blue,
             text: "Profile",

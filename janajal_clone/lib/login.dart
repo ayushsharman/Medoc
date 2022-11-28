@@ -85,8 +85,7 @@ class _LoginDemoState extends State<loginPage> {
                       backgroundColor: Colors.blue[800],
                     ),
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => HomePage()));
+                      Navigator.pushNamed(context, 'homePage');
                     },
                     child: Text(
                       'Login',
@@ -108,8 +107,7 @@ class _LoginDemoState extends State<loginPage> {
                         backgroundColor: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => HomePage()));
+                        Navigator.pushNamed(context, 'homePage');
                       },
                       child: Text(
                         'Login Via OTP',
@@ -150,14 +148,7 @@ class _LoginDemoState extends State<loginPage> {
                         shadowColor: Colors.black,
                         backgroundColor: Colors.white,
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => HomePage(),
-                          ),
-                        );
-                      },
+                      onPressed: () {},
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.asset('assets/google.jpg'),
@@ -175,10 +166,7 @@ class _LoginDemoState extends State<loginPage> {
                         shadowColor: Colors.black,
                         backgroundColor: Colors.white,
                       ),
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => HomePage()));
-                      },
+                      onPressed: () {},
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.asset('assets/facebook.png'),

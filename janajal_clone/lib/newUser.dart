@@ -17,7 +17,7 @@ class _newUserState extends State<newUser> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: Colors.black, //change your color here
+          color: Colors.blueGrey[600],
         ),
         backgroundColor: Colors.white,
         centerTitle: true,

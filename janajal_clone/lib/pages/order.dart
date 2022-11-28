@@ -86,12 +86,7 @@ class _OrderPageState extends State<OrderPage> {
             ),
             GButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => OrderPage(),
-                  ),
-                );
+                Navigator.pushNamed(context, 'order');
               },
               icon: Icons.local_shipping_sharp,
               iconColor: Colors.blue,
@@ -103,6 +98,9 @@ class _OrderPageState extends State<OrderPage> {
               text: "Wallet",
             ),
             GButton(
+              onPressed: () {
+                Navigator.pushNamed(context, 'profile');
+              },
               icon: Icons.account_circle_sharp,
               iconColor: Colors.blue,
               text: "Profile",
