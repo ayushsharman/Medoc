@@ -93,6 +93,9 @@ class _OrderPageState extends State<OrderPage> {
               text: "Orders",
             ),
             GButton(
+              onPressed: () {
+                Navigator.pushNamed(context, 'wallet');
+              },
               icon: Icons.account_balance_wallet_sharp,
               iconColor: Colors.blue,
               text: "Wallet",

@@ -1,12 +1,11 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:path_provider_android/path_provider_android.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class myProfile extends StatelessWidget {
-  const myProfile({Key? key}) : super(key: key);
+class MyProfile extends StatelessWidget {
+  const MyProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -269,6 +268,9 @@ class myProfile extends StatelessWidget {
             text: "Orders",
           ),
           GButton(
+            onPressed: () {
+              Navigator.pushNamed(context, 'wallet');
+            },
             icon: Icons.account_balance_wallet_sharp,
             iconColor: Colors.blue,
             text: "Wallet",
