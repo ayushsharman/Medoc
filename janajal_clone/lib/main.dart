@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:janajal_clone/login.dart';
 import 'package:janajal_clone/newUser.dart';
+import 'package:janajal_clone/pages/delivery.dart';
 import 'package:janajal_clone/pages/home.dart';
 import 'package:janajal_clone/pages/order.dart';
 import 'package:janajal_clone/pages/profile.dart';
@@ -13,10 +14,11 @@ void main() {
     routes: {
       'login': (context) => loginPage(),
       'newUser': (context) => const newUser(),
-      'homePage': (context) => HomePage(),
+      'homePage': (context) => const HomePage(),
       'order': (context) => const OrderPage(),
       'profile': (context) => const MyProfile(),
       'wallet': (context) => const MyWallet(),
+      'delivery': (context) => const MyDelivery(),
     },
   ));
 }

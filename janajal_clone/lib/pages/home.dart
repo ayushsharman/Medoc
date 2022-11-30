@@ -6,7 +6,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -20,6 +20,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
               height: 200,
@@ -32,20 +33,13 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
             SmoothPageIndicator(
               controller: _controller,
               count: 2,
               effect: const WormEffect(),
             ),
-            SizedBox(
-              height: 10,
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              // ignore: prefer_const_literals_to_create_immutables
               children: [
                 iconButton(
                   icon: Icons.location_on_rounded,
@@ -70,265 +64,255 @@ class _HomePageState extends State<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.blueAccent[100],
-                      boxShadow: [
-                        BoxShadow(
-                          spreadRadius: 5,
-                          blurRadius: 15,
-                          color: Color.fromARGB(255, 213, 213, 213),
+                ElevatedButton(
+                  onPressed: () {
+                    // Navigator.pushNamed(context, 'delivery');
+                    // Ye krna hai.........
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: (Colors.greenAccent[100]),
+                    shadowColor: Colors.grey,
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    fixedSize: Size(175, 180),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Container(
+                          height: 90,
+                          width: 150,
+                          decoration: new BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                spreadRadius: 2,
+                                blurRadius: 15,
+                                color: Color.fromARGB(98, 0, 0, 0),
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Image.asset(
+                              'assets/atm card.png',
+                            ),
+                          ),
                         ),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.blue[600],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            height: 90,
-                            width: 150,
-                            decoration: new BoxDecoration(
+                          child: Text(
+                            "Prepaid Card",
+                            style: TextStyle(
                               color: Colors.white,
-                              shape: BoxShape.circle,
-                              boxShadow: [
-                                BoxShadow(
-                                  spreadRadius: 2,
-                                  blurRadius: 15,
-                                  color: Color.fromARGB(98, 0, 0, 0),
-                                ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(25.0),
-                              child: Image.asset(
-                                'assets/atm card.png',
-                              ),
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.blue[600],
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Text(
-                                "Prepaid Card",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color.fromARGB(85, 105, 240, 175),
-                      boxShadow: [
-                        BoxShadow(
-                          spreadRadius: 5,
-                          blurRadius: 15,
-                          color: Color.fromARGB(255, 213, 213, 213),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            height: 90,
-                            width: 150,
-                            decoration: new BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
-                              boxShadow: [
-                                BoxShadow(
-                                  spreadRadius: 2,
-                                  blurRadius: 15,
-                                  color: Color.fromARGB(98, 0, 0, 0),
-                                ),
-                              ],
-                            ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'delivery');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: (Colors.blue[100]),
+                    shadowColor: Colors.grey,
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    fixedSize: Size(175, 180),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Container(
+                          height: 90,
+                          width: 150,
+                          decoration: new BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                spreadRadius: 2,
+                                blurRadius: 15,
+                                color: Color.fromARGB(98, 0, 0, 0),
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
                             child: Image.asset(
                               'assets/rickshaw.png',
                             ),
                           ),
                         ),
-                        Padding(
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.blue[600],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.blue[600],
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Text(
-                                "Place Order",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                          child: Text(
+                            "Place Order",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
-                        )
-                      ],
-                    ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
               ],
             ),
+            SizedBox(
+              height: 10,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.deepOrange[200],
-                      boxShadow: [
-                        BoxShadow(
-                          spreadRadius: 5,
-                          blurRadius: 15,
-                          color: Color.fromARGB(255, 213, 213, 213),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'delivery');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: (Colors.deepOrange[200]),
+                    shadowColor: Colors.grey,
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    fixedSize: Size(175, 180),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Container(
+                          height: 90,
+                          width: 150,
+                          decoration: new BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                spreadRadius: 2,
+                                blurRadius: 15,
+                                color: Color.fromARGB(98, 0, 0, 0),
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Image.asset(
+                              'assets/home.png',
+                            ),
+                          ),
                         ),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.blue[600],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            height: 90,
-                            width: 150,
-                            decoration: new BoxDecoration(
+                          child: Text(
+                            "My delivery\n   location",
+                            style: TextStyle(
                               color: Colors.white,
-                              shape: BoxShape.circle,
-                              boxShadow: [
-                                BoxShadow(
-                                  spreadRadius: 2,
-                                  blurRadius: 15,
-                                  color: Color.fromARGB(98, 0, 0, 0),
-                                ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(25.0),
-                              child: Image.asset(
-                                'assets/home.png',
-                              ),
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.blue[600],
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Text(
-                                "My delivery\n  location",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.pink[50],
-                      boxShadow: [
-                        BoxShadow(
-                          spreadRadius: 5,
-                          blurRadius: 15,
-                          color: Color.fromARGB(255, 213, 213, 213),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'wallet');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: (Colors.pink[50]),
+                    shadowColor: Colors.grey,
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    fixedSize: Size(175, 180),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Container(
+                          height: 90,
+                          width: 150,
+                          decoration: new BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                spreadRadius: 2,
+                                blurRadius: 15,
+                                color: Color.fromARGB(98, 0, 0, 0),
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Image.asset(
+                              'assets/card.png',
+                            ),
+                          ),
                         ),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.blue[600],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            height: 90,
-                            width: 150,
-                            decoration: new BoxDecoration(
+                          child: Text(
+                            "  Top-up\nMy Wallet",
+                            style: TextStyle(
                               color: Colors.white,
-                              shape: BoxShape.circle,
-                              boxShadow: [
-                                BoxShadow(
-                                  spreadRadius: 2,
-                                  blurRadius: 15,
-                                  color: Color.fromARGB(98, 0, 0, 0),
-                                ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Image.asset(
-                                'assets/card.png',
-                              ),
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.blue[600],
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Text(
-                                "  Top-up\nMy Wallet",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ),
               ],
+            ),
+            SizedBox(
+              height: 20,
             ),
           ],
         ),
