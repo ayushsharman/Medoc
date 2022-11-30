@@ -5,6 +5,7 @@ class iconButton extends StatelessWidget {
   final String subheading;
   final IconData icon;
   final Color color;
+  final String onpressed;
 
   const iconButton({
     super.key,
@@ -12,47 +13,51 @@ class iconButton extends StatelessWidget {
     required this.subheading,
     required this.icon,
     required this.color,
+    required this.onpressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: 80,
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(25),
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.pushNamed(context, onpressed);
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: color,
+          shadowColor: Colors.grey,
+          elevation: 3,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
+          fixedSize: const Size(80, 70),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(
-                    icon,
-                    color: Colors.white,
-                  ),
-                  Text(
-                    heading,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  Text(
-                    subheading,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              color: Colors.white,
+            ),
+            Text(
+              heading,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
               ),
-            ],
-          ),
+            ),
+            Text(
+              subheading,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+          ],
         ),
       ),
     );
