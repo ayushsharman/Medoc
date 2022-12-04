@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 iconButton(
-                  onpressed: 'profile',
+                  onpressed: 'delivery',
                   icon: Icons.location_on_rounded,
                   heading: "Locate",
                   subheading: "WATM",
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.blue,
                 ),
                 iconButton(
-                  onpressed: 'profile',
+                  onpressed: 'faq',
                   icon: Icons.question_answer,
                   heading: "FAQ &",
                   subheading: "Help",

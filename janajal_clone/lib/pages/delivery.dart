@@ -12,6 +12,9 @@ class _MyDeliveryState extends State<MyDelivery> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.blueGrey[600],
+        ),
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(

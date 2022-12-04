@@ -250,13 +250,17 @@ class _newUserState extends State<newUser> {
                   fontSize: 20.0,
                 ),
                 children: <TextSpan>[
-                  TextSpan(text: 'New User?'),
+                  TextSpan(text: 'Check out our'),
                   TextSpan(
-                      text: ' Sign Up!',
-                      style: TextStyle(
-                        color: Colors.blue[400],
-                      ),
-                      recognizer: TapGestureRecognizer()..onTap = () {}),
+                    text: ' Terms and Conditions',
+                    style: TextStyle(
+                      color: Colors.blue[400],
+                    ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        Navigator.pushNamed(context, 'terms');
+                      },
+                  ),
                 ],
               ),
             ),
