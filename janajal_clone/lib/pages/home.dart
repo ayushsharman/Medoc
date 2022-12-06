@@ -23,32 +23,38 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
-              height: 200,
+              height: 210,
               child: ListView(
                 controller: _controller,
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Container(
-                    width: 405,
-                    color: Colors.blue[800],
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: 400,
+                      decoration: BoxDecoration(
+                        color: Colors.blue[800],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: Image.asset('assets/cards1.png'),
                     ),
                   ),
-                  Container(
-                    width: 405,
-                    color: Colors.pink[200],
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: 400,
+                      decoration: BoxDecoration(
+                        color: Colors.pink[200],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: Image.asset('assets/cards2.png'),
                     ),
                   ),
-                  Container(
-                    width: 405,
-                    color: Colors.blue[800],
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: 400,
+                      color: Colors.blue[800],
                       child: Image.asset('assets/cards3.png'),
                     ),
                   ),

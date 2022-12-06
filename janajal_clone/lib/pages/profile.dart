@@ -94,16 +94,34 @@ class MyProfile extends StatelessWidget {
             thickness: 1,
             color: Colors.blueGrey[600],
           ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Text(
-              "About us",
-              style: TextStyle(
-                color: Colors.blueGrey[600],
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15.0,
+                  vertical: 5,
+                ),
+                child: Text(
+                  "About us",
+                  style: TextStyle(
+                    color: Colors.blueGrey[600],
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-            ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Text(
+                  "+91 9810127627",
+                  style: TextStyle(
+                    color: Colors.blueGrey[600],
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ],
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
