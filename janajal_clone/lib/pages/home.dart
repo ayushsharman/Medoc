@@ -28,14 +28,36 @@ class _HomePageState extends State<HomePage> {
                 controller: _controller,
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Image.asset('assets/cards1.png'),
-                  Image.asset('assets/cards2.png'),
+                  Container(
+                    width: 405,
+                    color: Colors.blue[800],
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset('assets/cards1.png'),
+                    ),
+                  ),
+                  Container(
+                    width: 405,
+                    color: Colors.pink[200],
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset('assets/cards2.png'),
+                    ),
+                  ),
+                  Container(
+                    width: 405,
+                    color: Colors.blue[800],
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset('assets/cards3.png'),
+                    ),
+                  ),
                 ],
               ),
             ),
             SmoothPageIndicator(
               controller: _controller,
-              count: 2,
+              count: 3,
               effect: const WormEffect(),
             ),
             Row(

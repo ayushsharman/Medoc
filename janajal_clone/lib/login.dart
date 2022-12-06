@@ -21,13 +21,10 @@ class _LoginDemoState extends State<loginPage> {
               padding: const EdgeInsets.only(top: 60.0),
               child: Center(
                 child: Container(
-                    width: 200,
-                    height: 150,
+                    // width: 200,
+                    // height: 150,
                     child: Image.asset('assets/download.jpg')),
               ),
-            ),
-            SizedBox(
-              height: 40,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
@@ -177,7 +174,7 @@ class _LoginDemoState extends State<loginPage> {
               ),
             ),
             SizedBox(
-              height: 120,
+              height: 90,
             ),
             RichText(
               text: TextSpan(
