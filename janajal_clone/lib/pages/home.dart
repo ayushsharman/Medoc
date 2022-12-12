@@ -54,7 +54,10 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       width: 400,
-                      color: Colors.blue[800],
+                      decoration: BoxDecoration(
+                        color: Colors.orange[200],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: Image.asset('assets/cards3.png'),
                     ),
                   ),
@@ -77,13 +80,6 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.purple,
                 ),
                 iconButton(
-                  onpressed: 'profile',
-                  icon: Icons.qr_code,
-                  heading: "Scan",
-                  subheading: "& Pay",
-                  color: Colors.blue,
-                ),
-                iconButton(
                   onpressed: 'faq',
                   icon: Icons.question_answer,
                   heading: "FAQ &",
@@ -97,8 +93,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // Navigator.pushNamed(context, 'delivery');
-                    // Ye krna hai.........
+                    Navigator.pushNamed(context, 'prepaid');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: (Colors.greenAccent[100]),
@@ -151,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),

@@ -29,8 +29,8 @@ class iconButton extends StatelessWidget {
           shadowColor: Colors.grey,
           elevation: 3,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
-          fixedSize: const Size(80, 70),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(45.0)),
+          fixedSize: const Size(115, 65),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

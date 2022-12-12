@@ -5,6 +5,7 @@ import 'package:janajal_clone/pages/delivery.dart';
 import 'package:janajal_clone/pages/faq.dart';
 import 'package:janajal_clone/pages/home.dart';
 import 'package:janajal_clone/pages/order.dart';
+import 'package:janajal_clone/pages/prepaid.dart';
 import 'package:janajal_clone/pages/profile.dart';
 import 'package:janajal_clone/pages/wallet.dart';
 import 'package:janajal_clone/terms.dart';
@@ -23,6 +24,7 @@ void main() {
       'delivery': (context) => const MyDelivery(),
       'faq': (context) => const MyFaqList(),
       'terms': (context) => const MyTerms(),
+      'prepaid': (context) => const PrepaidCard(),
     },
   ));
 }
