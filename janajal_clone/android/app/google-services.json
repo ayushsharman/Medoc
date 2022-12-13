@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "434279142477",
+    "project_id": "janadhara-c5d43",
+    "storage_bucket": "janadhara-c5d43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434279142477:android:5d574d1d57ccd73242f804",
+        "android_client_info": {
+          "package_name": "com.example.janajal_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434279142477-2hcs5f3tbmqokgafelai6q7sqetj0use.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPTKSSIS5czz2gugoHCe7vPqyd3v_x5pU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "434279142477-2hcs5f3tbmqokgafelai6q7sqetj0use.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
