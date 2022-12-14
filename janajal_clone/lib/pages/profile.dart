@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,9 +19,7 @@ class MyProfile extends StatelessWidget {
               color: Colors.blueGrey[600],
               size: 30,
             ),
-            onPressed: () {
-              Navigator.pushNamed(context, 'login');
-            },
+            onPressed: () => FirebaseAuth.instance.signOut(),
           )
         ],
         backgroundColor: Colors.white,

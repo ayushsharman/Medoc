@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:janajal_clone/login.dart';
+import 'package:janajal_clone/mainPage.dart';
 import 'package:janajal_clone/newUser.dart';
 import 'package:janajal_clone/pages/delivery.dart';
 import 'package:janajal_clone/pages/faq.dart';
@@ -17,9 +18,10 @@ Future main() async {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'login',
+      initialRoute: 'main',
       routes: {
         'login': (context) => loginPage(),
+        'main': (context) => MainPage(),
         'newUser': (context) => const newUser(),
         'homePage': (context) => const HomePage(),
         'order': (context) => const OrderPage(),

@@ -1,4 +1,6 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:janajal_clone/pages/home.dart';
@@ -10,6 +12,22 @@ class loginPage extends StatefulWidget {
 }
 
 class _LoginDemoState extends State<loginPage> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
+  }
+
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,10 +38,7 @@ class _LoginDemoState extends State<loginPage> {
             Padding(
               padding: const EdgeInsets.only(top: 60.0),
               child: Center(
-                child: Container(
-                    // width: 200,
-                    // height: 150,
-                    child: Image.asset('assets/download.jpg')),
+                child: Container(child: Image.asset('assets/download.jpg')),
               ),
             ),
             Padding(
@@ -34,11 +49,12 @@ class _LoginDemoState extends State<loginPage> {
                 elevation: 5.0,
                 shadowColor: Colors.black,
                 child: TextField(
+                  controller: _emailController,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
-                      labelText: 'Email/Phone',
+                      labelText: 'Email',
                       hintText: 'Enter valid email id as abc@gmail.com'),
                 ),
               ),
@@ -54,6 +70,7 @@ class _LoginDemoState extends State<loginPage> {
                 elevation: 5.0,
                 shadowColor: Colors.black,
                 child: TextField(
+                  controller: _passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -81,9 +98,10 @@ class _LoginDemoState extends State<loginPage> {
                       shadowColor: Colors.black,
                       backgroundColor: Colors.blue[800],
                     ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, 'homePage');
-                    },
+                    onPressed: () => signIn(),
+                    // {
+                    //   Navigator.pushNamed(context, 'homePage');
+                    // },
                     child: Text(
                       'Login',
                       style: TextStyle(
