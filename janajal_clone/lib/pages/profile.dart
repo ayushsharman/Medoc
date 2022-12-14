@@ -14,13 +14,15 @@ class MyProfile extends StatelessWidget {
       appBar: AppBar(
         actions: <Widget>[
           IconButton(
-            icon: Icon(
-              Icons.exit_to_app,
-              color: Colors.blueGrey[600],
-              size: 30,
-            ),
-            onPressed: () => FirebaseAuth.instance.signOut(),
-          )
+              icon: Icon(
+                Icons.exit_to_app,
+                color: Colors.blueGrey[600],
+                size: 30,
+              ),
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.pushNamed(context, 'login');
+              })
         ],
         backgroundColor: Colors.white,
         centerTitle: true,
