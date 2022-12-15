@@ -1,10 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:janajal_clone/pages/home.dart';
-import 'package:janajal_clone/newUser.dart';
+import 'package:janajal_clone/loginPages/newUser.dart';
 
 class loginPage extends StatefulWidget {
   @override
@@ -12,14 +10,45 @@ class loginPage extends StatefulWidget {
 }
 
 class _LoginDemoState extends State<loginPage> {
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Wrong Details!'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text('Kindly enter valid email/password'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
   Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+    } catch (e) {
+      _showMyDialog();
+    }
   }
 
   void dispose() {
@@ -98,10 +127,10 @@ class _LoginDemoState extends State<loginPage> {
                       shadowColor: Colors.black,
                       backgroundColor: Colors.blue[800],
                     ),
-                    onPressed: () => signIn(),
-                    // {
-                    //   Navigator.pushNamed(context, 'homePage');
-                    // },
+                    onPressed: () {
+                      signIn();
+                      Navigator.pushNamed(context, 'homePage');
+                    },
                     child: Text(
                       'Login',
                       style: TextStyle(
@@ -111,8 +140,8 @@ class _LoginDemoState extends State<loginPage> {
                     ),
                   ),
                   Container(
-                    height: 50,
-                    width: 200,
+                    height: 40,
+                    width: 190,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
@@ -122,13 +151,13 @@ class _LoginDemoState extends State<loginPage> {
                         backgroundColor: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, 'homePage');
+                        Navigator.pushNamed(context, 'reset');
                       },
                       child: Text(
-                        'Login Via OTP',
+                        'Forgot Password',
                         style: TextStyle(
                           color: Colors.blue[800],
-                          fontSize: 25,
+                          fontSize: 20,
                         ),
                       ),
                     ),

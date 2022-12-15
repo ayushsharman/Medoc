@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:janajal_clone/login.dart';
+import 'package:janajal_clone/loginPages/login.dart';
+import 'package:janajal_clone/loginPages/resetPass.dart';
 import 'package:janajal_clone/mainPage.dart';
-import 'package:janajal_clone/newUser.dart';
+import 'package:janajal_clone/loginPages/newUser.dart';
 import 'package:janajal_clone/pages/delivery.dart';
 import 'package:janajal_clone/pages/faq.dart';
 import 'package:janajal_clone/pages/home.dart';
@@ -9,7 +10,7 @@ import 'package:janajal_clone/pages/order.dart';
 import 'package:janajal_clone/pages/prepaid.dart';
 import 'package:janajal_clone/pages/profile.dart';
 import 'package:janajal_clone/pages/wallet.dart';
-import 'package:janajal_clone/terms.dart';
+import 'package:janajal_clone/loginPages/terms.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future main() async {
@@ -23,6 +24,7 @@ Future main() async {
         'login': (context) => loginPage(),
         'main': (context) => MainPage(),
         'newUser': (context) => const newUser(),
+        'reset': (context) => const ResetPassword(),
         'homePage': (context) => const HomePage(),
         'order': (context) => const OrderPage(),
         'profile': (context) => const MyProfile(),

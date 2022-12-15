@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:janajal_clone/login.dart';
+import 'package:janajal_clone/loginPages/login.dart';
 import 'package:janajal_clone/pages/home.dart';
 
 class MainPage extends StatelessWidget {

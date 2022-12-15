@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:janajal_clone/pages/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class newUser extends StatefulWidget {
   const newUser({super.key});
@@ -12,6 +13,20 @@ class newUser extends StatefulWidget {
 }
 
 class _newUserState extends State<newUser> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future signUp() async {
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+    } catch (e) {
+      Navigator.pushNamed(context, 'login');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,7 +131,7 @@ class _newUserState extends State<newUser> {
                 elevation: 5.0,
                 shadowColor: Colors.black,
                 child: TextField(
-                  obscureText: true,
+                  controller: _emailController,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -137,6 +152,7 @@ class _newUserState extends State<newUser> {
                 elevation: 5.0,
                 shadowColor: Colors.black,
                 child: TextField(
+                  controller: _passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -162,8 +178,8 @@ class _newUserState extends State<newUser> {
                   backgroundColor: Colors.blue[800],
                 ),
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HomePage()));
+                  signUp();
+                  Navigator.pushNamed(context, 'homePage');
                 },
                 child: Text(
                   'Sign Up',
