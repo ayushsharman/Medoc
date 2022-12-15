@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:janajal_clone/pages/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:path_provider/path_provider.dart';
 
 class newUser extends StatefulWidget {
   const newUser({super.key});
@@ -15,6 +17,9 @@ class newUser extends StatefulWidget {
 class _newUserState extends State<newUser> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _firtNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
+  final _mobileController = TextEditingController();
 
   Future signUp() async {
     try {
@@ -22,9 +27,37 @@ class _newUserState extends State<newUser> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
+
+      addUserDetails(
+        _firtNameController.text.trim(),
+        _lastNameController.text.trim(),
+        _emailController.text.trim(),
+        int.parse(_mobileController.text.trim()),
+      );
     } catch (e) {
       Navigator.pushNamed(context, 'login');
     }
+  }
+
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _firtNameController.dispose();
+    _lastNameController.dispose();
+    _mobileController.dispose();
+    super.dispose();
+  }
+
+  Future addUserDetails(
+      String firstName, String lastName, String email, int mobile) async {
+    await FirebaseFirestore.instance.collection('users').add(
+      {
+        'first name': firstName,
+        'last name': lastName,
+        'email': email,
+        'mobile': mobile,
+      },
+    );
   }
 
   @override
@@ -65,6 +98,7 @@ class _newUserState extends State<newUser> {
                       elevation: 5.0,
                       shadowColor: Colors.black,
                       child: TextField(
+                        controller: _firtNameController,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius:
@@ -86,6 +120,7 @@ class _newUserState extends State<newUser> {
                       elevation: 5.0,
                       shadowColor: Colors.black,
                       child: TextField(
+                        controller: _lastNameController,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius:
@@ -110,7 +145,7 @@ class _newUserState extends State<newUser> {
                 elevation: 5.0,
                 shadowColor: Colors.black,
                 child: TextField(
-                  obscureText: true,
+                  controller: _mobileController,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
