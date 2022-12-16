@@ -40,7 +40,10 @@ class MyProfile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+            padding: EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 10,
+            ),
             child: PhysicalModel(
               borderRadius: BorderRadius.circular(25),
               color: Colors.white,
@@ -74,7 +77,10 @@ class MyProfile extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+            padding: EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 10,
+            ),
             child: PhysicalModel(
               borderRadius: BorderRadius.circular(25),
               color: Colors.white,
@@ -95,68 +101,86 @@ class MyProfile extends StatelessWidget {
             thickness: 1,
             color: Colors.blueGrey[600],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 15.0,
-                  vertical: 5,
-                ),
-                child: Text(
-                  "About us",
-                  style: TextStyle(
-                    color: Colors.blueGrey[600],
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Text(
-                  "+91 9810127627",
-                  style: TextStyle(
-                    color: Colors.blueGrey[600],
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-            ],
-          ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15.0,
+            ),
             child: Text(
-              "JanaJal envisions building India’s first water-sharing economy and the largest decentralized water distribution network through installation and operation of water ATMs. The company is working to make safe drinking water available, accessible, and affordable to the common man in a sustainable manner.",
+              "About us",
               style: TextStyle(
-                color: Colors.blueGrey,
-                fontSize: 18,
+                color: Colors.blueGrey[600],
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          SizedBox(
-            height: 5,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            child: Text(
+              "We're Water Supply and Irrigation Systems based Industary located in New Delhi. Our main aim to provide Safe Drinking Water to people on cost to cost.",
+              style: TextStyle(
+                color: Colors.blueGrey,
+                fontSize: 16,
+              ),
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(12.0, 0, 0, 0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15.0,
+            ),
             child: Text(
-              "Sustainable • Measurable • Agnostic • Resilient • Timely ",
+              "Contact Details",
               style: TextStyle(
-                fontStyle: FontStyle.italic,
+                color: Colors.blueGrey[600],
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15.0,
+            ),
+            child: Text(
+              "• +919810127627\n• vijaykumar@jaldharaindia.com",
+              style: TextStyle(
+                color: Colors.blueGrey[600],
+                fontSize: 16,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15.0,
+            ),
+            child: Text(
+              "Service Areas",
+              style: TextStyle(
+                color: Colors.blueGrey[600],
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15.0,
+            ),
+            child: Text(
+              "• Sangam Vihar, Delhi, India\n• Okhla, Delhi, India\n• Faridabad Sector 23, Haryana, India",
+              style: TextStyle(
                 color: Colors.blueGrey,
-                fontSize: 15,
-                fontWeight: FontWeight.w900,
+                fontSize: 16,
               ),
             ),
           ),
           Container(
-            margin: const EdgeInsets.fromLTRB(20, 10, 20, 10),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SizedBox(
                   height: 40,
-                  width: 63,
+                  width: 70,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -166,18 +190,18 @@ class MyProfile extends StatelessWidget {
                       backgroundColor: Colors.white,
                     ),
                     onPressed: () async {
-                      final urlWebsite =
-                          Uri.http('www.janajal.com', '/index.html');
-                      if (!await launchUrl(urlWebsite)) {
-                        throw 'Could not launch $urlWebsite';
-                      }
+                      // final urlWebsite =
+                      //     Uri.http('www.janajal.com', '/index.html');
+                      // if (!await launchUrl(urlWebsite)) {
+                      //   throw 'Could not launch $urlWebsite';
+                      // }
                     },
                     child: Image.asset('assets/janajalLogo.png'),
                   ),
                 ),
                 SizedBox(
                   height: 40,
-                  width: 63,
+                  width: 70,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -188,7 +212,7 @@ class MyProfile extends StatelessWidget {
                     ),
                     onPressed: () async {
                       final urlFacebook =
-                          Uri.http('www.facebook.com', '/JanaJalImpact');
+                          Uri.http('www.facebook.com', '/JalDhara568');
                       if (!await launchUrl(urlFacebook)) {
                         throw 'Could not launch $urlFacebook';
                       }
@@ -198,7 +222,7 @@ class MyProfile extends StatelessWidget {
                 ),
                 SizedBox(
                   height: 40,
-                  width: 63,
+                  width: 70,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -208,50 +232,8 @@ class MyProfile extends StatelessWidget {
                       backgroundColor: Colors.white,
                     ),
                     onPressed: () async {
-                      final urlInstagram =
-                          Uri.http('www.instagram.com', 'janajalimpact');
-                      if (!await launchUrl(urlInstagram)) {
-                        throw 'Could not launch $urlInstagram';
-                      }
-                    },
-                    child: Image.asset('assets/instagram.png'),
-                  ),
-                ),
-                SizedBox(
-                  height: 40,
-                  width: 63,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0)),
-                      elevation: 5.0,
-                      shadowColor: Colors.black,
-                      backgroundColor: Colors.white,
-                    ),
-                    onPressed: () async {
-                      final urlTwitter =
-                          Uri.http('www.twitter.com', '/janajalimpact');
-                      if (!await launchUrl(urlTwitter)) {
-                        throw 'Could not launch $urlTwitter';
-                      }
-                    },
-                    child: Image.asset('assets/twitter.png'),
-                  ),
-                ),
-                SizedBox(
-                  height: 40,
-                  width: 63,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0)),
-                      elevation: 5.0,
-                      shadowColor: Colors.black,
-                      backgroundColor: Colors.white,
-                    ),
-                    onPressed: () async {
-                      final urlWebsite =
-                          Uri.http('www.linkedin.com', '/company/janajal/');
+                      final urlWebsite = Uri.http('www.linkedin.com',
+                          '/company/jaldhara-enterprises-india/');
                       if (!await launchUrl(urlWebsite)) {
                         throw 'Could not launch $urlWebsite';
                       }
