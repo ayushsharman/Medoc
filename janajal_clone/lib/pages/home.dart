@@ -219,7 +219,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, 'delivery');
+                    Navigator.pushNamed(context, 'location');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: (Colors.deepOrange[200]),

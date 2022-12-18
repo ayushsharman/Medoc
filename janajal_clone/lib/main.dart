@@ -6,6 +6,7 @@ import 'package:janajal_clone/loginPages/newUser.dart';
 import 'package:janajal_clone/pages/delivery.dart';
 import 'package:janajal_clone/pages/faq.dart';
 import 'package:janajal_clone/pages/home.dart';
+import 'package:janajal_clone/pages/location.dart';
 import 'package:janajal_clone/pages/order.dart';
 import 'package:janajal_clone/pages/prepaid.dart';
 import 'package:janajal_clone/pages/profile.dart';
@@ -27,6 +28,7 @@ Future main() async {
         'reset': (context) => const ResetPassword(),
         'homePage': (context) => const HomePage(),
         'order': (context) => const OrderPage(),
+        'location': (context) => const AddLocation(),
         'profile': (context) => const MyProfile(),
         'wallet': (context) => const MyWallet(),
         'delivery': (context) => const MyDelivery(),
