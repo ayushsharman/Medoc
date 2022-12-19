@@ -15,6 +15,33 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _controller = PageController();
 
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Coming Soon'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text('Under Development'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,10 +100,10 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 iconButton(
-                  onpressed: 'delivery',
+                  onpressed: 'location',
                   icon: Icons.location_on_rounded,
-                  heading: "Locate",
-                  subheading: "WATM",
+                  heading: "Add GPS",
+                  subheading: "location",
                   color: Colors.purple,
                 ),
                 iconButton(
@@ -93,7 +120,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, 'prepaid');
+                    _showMyDialog();
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: (Colors.greenAccent[100]),
@@ -278,7 +305,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, 'wallet');
+                    _showMyDialog();
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: (Colors.pink[50]),
@@ -368,7 +395,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Navigator.pushNamed(context, 'wallet');
             },
-            icon: Icons.account_balance_wallet_sharp,
+            icon: Icons.people,
             iconColor: Colors.blue,
             text: "Wallet",
           ),

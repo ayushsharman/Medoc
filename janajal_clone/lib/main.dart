@@ -10,7 +10,7 @@ import 'package:janajal_clone/pages/location.dart';
 import 'package:janajal_clone/pages/order.dart';
 import 'package:janajal_clone/pages/prepaid.dart';
 import 'package:janajal_clone/pages/profile.dart';
-import 'package:janajal_clone/pages/wallet.dart';
+import 'package:janajal_clone/pages/about.dart';
 import 'package:janajal_clone/loginPages/terms.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -30,7 +30,7 @@ Future main() async {
         'order': (context) => const OrderPage(),
         'location': (context) => const AddLocation(),
         'profile': (context) => const MyProfile(),
-        'wallet': (context) => const MyWallet(),
+        'wallet': (context) => const AboutUs(),
         'delivery': (context) => const MyDelivery(),
         'faq': (context) => const MyFaqList(),
         'terms': (context) => const MyTerms(),

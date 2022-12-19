@@ -41,18 +41,6 @@ class _MyDeliveryState extends State<AddLocation> {
   }
 
   @override
-  void initState() {
-    _cnt = SingleValueDropDownController();
-    dateInput.text = "";
-    super.initState();
-  }
-
-  void dispose() {
-    _cnt.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -79,9 +67,9 @@ class _MyDeliveryState extends State<AddLocation> {
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: TextField(
               decoration: InputDecoration(
-                  icon: Icon(Icons.water_drop),
-                  labelText: 'Quantity',
-                  hintText: 'Enter Water amount in litres'),
+                  icon: Icon(Icons.add_location),
+                  labelText: 'Address',
+                  hintText: 'Enter your address'),
             ),
           ),
           SizedBox(
@@ -90,63 +78,10 @@ class _MyDeliveryState extends State<AddLocation> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: TextField(
-              controller: dateInput,
-              //editing controller of this TextField
               decoration: InputDecoration(
-                  icon: Icon(Icons.calendar_today), //icon of text field
-                  labelText: "Enter Date" //label text of field
-                  ),
-              readOnly: true,
-              //set it true, so that user will not able to edit text
-              onTap: () async {
-                DateTime? pickedDate = await showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(1950),
-                    //DateTime.now() - not to allow to choose before today.
-                    lastDate: DateTime(2100));
-
-                if (pickedDate != null) {
-                  print(
-                      pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                  String formattedDate =
-                      DateFormat('yyyy-MM-dd').format(pickedDate);
-                  print(
-                      formattedDate); //formatted date output using intl package =>  2021-03-16
-                  setState(() {
-                    dateInput.text =
-                        formattedDate; //set output date to TextField value.
-                  });
-                } else {}
-              },
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            child: DropDownTextField(
-              textFieldDecoration: InputDecoration(
-                icon: Icon(Icons.watch_later),
-                hintText: "Select Delivery Window",
-              ),
-              controller: _cnt,
-              clearOption: true,
-              enableSearch: true,
-              validator: (value) {
-                if (value == null) {
-                  return "Required field";
-                } else {
-                  return null;
-                }
-              },
-              dropDownItemCount: 3,
-              dropDownList: const [
-                DropDownValueModel(name: 'Morning', value: "9-11"),
-                DropDownValueModel(name: 'Afternoon', value: "11-2"),
-                DropDownValueModel(name: 'Evening', value: "2-6"),
-              ],
+                  icon: Icon(Icons.location_city),
+                  labelText: 'City',
+                  hintText: 'Enter your city'),
             ),
           ),
           SizedBox(

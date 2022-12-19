@@ -96,7 +96,7 @@ class _OrderPageState extends State<OrderPage> {
               onPressed: () {
                 Navigator.pushNamed(context, 'wallet');
               },
-              icon: Icons.account_balance_wallet_sharp,
+              icon: Icons.people,
               iconColor: Colors.blue,
               text: "Wallet",
             ),

@@ -3,7 +3,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class MyProfile extends StatefulWidget {
   const MyProfile({Key? key}) : super(key: key);
@@ -44,8 +43,10 @@ class _MyProfileState extends State<MyProfile> {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          SizedBox(
+            height: 20,
+          ),
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 15,
@@ -66,6 +67,9 @@ class _MyProfileState extends State<MyProfile> {
               ),
             ),
           ),
+          SizedBox(
+            height: 20,
+          ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: PhysicalModel(
@@ -82,6 +86,9 @@ class _MyProfileState extends State<MyProfile> {
                 ),
               ),
             ),
+          ),
+          SizedBox(
+            height: 20,
           ),
           Padding(
             padding: EdgeInsets.symmetric(
@@ -101,154 +108,6 @@ class _MyProfileState extends State<MyProfile> {
                   labelText: user.email!,
                 ),
               ),
-            ),
-          ),
-          Divider(
-            height: 1,
-            thickness: 1,
-            color: Colors.blueGrey[600],
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 15.0,
-            ),
-            child: Text(
-              "About us",
-              style: TextStyle(
-                color: Colors.blueGrey[600],
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: Text(
-              "We're Water Supply and Irrigation Systems based Industary located in New Delhi. Our main aim to provide Safe Drinking Water to people on cost to cost.",
-              style: TextStyle(
-                color: Colors.blueGrey,
-                fontSize: 16,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 15.0,
-            ),
-            child: Text(
-              "Contact Details",
-              style: TextStyle(
-                color: Colors.blueGrey[600],
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 15.0,
-            ),
-            child: Text(
-              "• +919810127627\n• vijaykumar@jaldharaindia.com",
-              style: TextStyle(
-                color: Colors.blueGrey[600],
-                fontSize: 16,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 15.0,
-            ),
-            child: Text(
-              "Service Areas",
-              style: TextStyle(
-                color: Colors.blueGrey[600],
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 15.0,
-            ),
-            child: Text(
-              "• Sangam Vihar, Delhi, India\n• Okhla, Delhi, India\n• Faridabad Sector 23, Haryana, India",
-              style: TextStyle(
-                color: Colors.blueGrey,
-                fontSize: 16,
-              ),
-            ),
-          ),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                SizedBox(
-                  height: 40,
-                  width: 70,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0)),
-                      elevation: 5.0,
-                      shadowColor: Colors.black,
-                      backgroundColor: Colors.white,
-                    ),
-                    onPressed: () async {
-                      // final urlWebsite =
-                      //     Uri.http('www.janajal.com', '/index.html');
-                      // if (!await launchUrl(urlWebsite)) {
-                      //   throw 'Could not launch $urlWebsite';
-                      // }
-                    },
-                    child: Image.asset('assets/janajalLogo.png'),
-                  ),
-                ),
-                SizedBox(
-                  height: 40,
-                  width: 70,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0)),
-                      elevation: 5.0,
-                      shadowColor: Colors.black,
-                      backgroundColor: Colors.white,
-                    ),
-                    onPressed: () async {
-                      final urlFacebook =
-                          Uri.http('www.facebook.com', '/JalDhara568');
-                      if (!await launchUrl(urlFacebook)) {
-                        throw 'Could not launch $urlFacebook';
-                      }
-                    },
-                    child: Image.asset('assets/facebook.png'),
-                  ),
-                ),
-                SizedBox(
-                  height: 40,
-                  width: 70,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0)),
-                      elevation: 5.0,
-                      shadowColor: Colors.black,
-                      backgroundColor: Colors.white,
-                    ),
-                    onPressed: () async {
-                      final urlWebsite = Uri.http('www.linkedin.com',
-                          '/company/jaldhara-enterprises-india/');
-                      if (!await launchUrl(urlWebsite)) {
-                        throw 'Could not launch $urlWebsite';
-                      }
-                    },
-                    child: Image.asset('assets/linkedin.png'),
-                  ),
-                ),
-              ],
             ),
           ),
         ],
@@ -279,7 +138,7 @@ class _MyProfileState extends State<MyProfile> {
             onPressed: () {
               Navigator.pushNamed(context, 'wallet');
             },
-            icon: Icons.account_balance_wallet_sharp,
+            icon: Icons.people,
             iconColor: Colors.blue,
             text: "Wallet",
           ),
