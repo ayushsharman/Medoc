@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:janajal_clone/mainPage.dart';
 import 'package:janajal_clone/pages/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -199,7 +200,7 @@ class _newUserState extends State<newUser> {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 40,
             ),
             Container(
               margin: const EdgeInsets.fromLTRB(20, 10, 20, 10),
@@ -226,72 +227,7 @@ class _newUserState extends State<newUser> {
               ),
             ),
             SizedBox(
-              height: 20,
-            ),
-            Text(
-              '-OR-',
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 25,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    height: 60,
-                    width: 120,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0)),
-                        elevation: 5.0,
-                        shadowColor: Colors.black,
-                        backgroundColor: Colors.white,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => HomePage(),
-                          ),
-                        );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset('assets/google.jpg'),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 60,
-                    width: 120,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0)),
-                        elevation: 5.0,
-                        shadowColor: Colors.black,
-                        backgroundColor: Colors.white,
-                      ),
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => HomePage()));
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset('assets/facebook.png'),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 120,
+              height: 250,
             ),
             RichText(
               text: TextSpan(

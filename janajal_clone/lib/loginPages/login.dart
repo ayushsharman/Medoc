@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:janajal_clone/loginPages/newUser.dart';
+import 'package:janajal_clone/mainPage.dart';
 
 class loginPage extends StatefulWidget {
   @override
@@ -129,7 +130,6 @@ class _LoginDemoState extends State<loginPage> {
                     ),
                     onPressed: () {
                       signIn();
-                      Navigator.pushNamed(context, 'homePage');
                     },
                     child: Text(
                       'Login',
@@ -192,7 +192,9 @@ class _LoginDemoState extends State<loginPage> {
                         shadowColor: Colors.black,
                         backgroundColor: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        signInWithGoogle();
+                      },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.asset('assets/google.jpg'),
@@ -210,7 +212,9 @@ class _LoginDemoState extends State<loginPage> {
                         shadowColor: Colors.black,
                         backgroundColor: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        facebookLogin();
+                      },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.asset('assets/facebook.png'),

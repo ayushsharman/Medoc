@@ -105,7 +105,7 @@ class _MyProfileState extends State<MyProfile> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
-                  labelText: user.email!,
+                  labelText: "ashsharman123@gmail.com",
                 ),
               ),
             ),
