@@ -141,11 +141,13 @@ class _MyDeliveryState extends State<MyDelivery> {
                   return null;
                 }
               },
-              dropDownItemCount: 3,
+              dropDownItemCount: 5,
               dropDownList: const [
-                DropDownValueModel(name: 'Morning', value: "9-11"),
-                DropDownValueModel(name: 'Afternoon', value: "11-2"),
-                DropDownValueModel(name: 'Evening', value: "2-6"),
+                DropDownValueModel(name: '7 AM - 9 AM', value: "7-9"),
+                DropDownValueModel(name: '9 AM - 11 AM', value: "9-11"),
+                DropDownValueModel(name: '11 AM - 2 PM', value: "11-2"),
+                DropDownValueModel(name: '2 PM - 5 PM', value: "2-5"),
+                DropDownValueModel(name: '5 PM - 7 PM', value: "5-7"),
               ],
             ),
           ),

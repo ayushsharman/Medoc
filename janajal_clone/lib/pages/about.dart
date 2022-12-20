@@ -78,6 +78,33 @@ class _MyWalletState extends State<AboutUs> {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15.0,
+              vertical: 10,
+            ),
+            child: Text(
+              "Servicing Areas",
+              style: TextStyle(
+                color: Colors.blueGrey[600],
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15.0,
+              vertical: 10,
+            ),
+            child: Text(
+              "• South Delhi",
+              style: TextStyle(
+                color: Colors.blueGrey[600],
+                fontSize: 20,
+              ),
+            ),
+          ),
           SizedBox(
             height: 30,
           ),
@@ -175,7 +202,7 @@ class _MyWalletState extends State<AboutUs> {
             },
             icon: Icons.people,
             iconColor: Colors.blue,
-            text: "Wallet",
+            text: "About",
           ),
           GButton(
             onPressed: () {

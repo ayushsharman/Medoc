@@ -3,6 +3,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:janajal_clone/mainPage.dart';
 
 class MyProfile extends StatefulWidget {
   const MyProfile({Key? key}) : super(key: key);
@@ -26,7 +28,7 @@ class _MyProfileState extends State<MyProfile> {
                 size: 30,
               ),
               onPressed: () {
-                FirebaseAuth.instance.signOut();
+                GoogleSignIn().disconnect();
                 Navigator.pushNamed(context, 'login');
               })
         ],

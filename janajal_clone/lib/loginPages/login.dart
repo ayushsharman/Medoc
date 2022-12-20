@@ -128,8 +128,9 @@ class _LoginDemoState extends State<loginPage> {
                       shadowColor: Colors.black,
                       backgroundColor: Colors.blue[800],
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       signIn();
+                      await Navigator.pushNamed(context, 'homePage');
                     },
                     child: Text(
                       'Login',
@@ -192,8 +193,9 @@ class _LoginDemoState extends State<loginPage> {
                         shadowColor: Colors.black,
                         backgroundColor: Colors.white,
                       ),
-                      onPressed: () {
+                      onPressed: () async {
                         signInWithGoogle();
+                        await Navigator.pushNamed(context, 'homePage');
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

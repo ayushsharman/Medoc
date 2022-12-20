@@ -87,6 +87,30 @@ class _MyDeliveryState extends State<AddLocation> {
           SizedBox(
             height: 20,
           ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: TextField(
+              decoration: InputDecoration(
+                  icon: Icon(Icons.flag),
+                  labelText: 'State',
+                  hintText: 'Enter your state'),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: TextField(
+              decoration: InputDecoration(
+                  icon: Icon(Icons.pin_drop),
+                  labelText: 'Pincode',
+                  hintText: 'Enter your Pincode'),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             margin: const EdgeInsets.fromLTRB(20, 10, 20, 10),
             child: ElevatedButton(
@@ -98,9 +122,9 @@ class _MyDeliveryState extends State<AddLocation> {
                 shadowColor: Colors.black,
                 backgroundColor: Colors.blue[800],
               ),
-              onPressed: _showMyDialog,
+              onPressed: () {},
               child: Text(
-                'Place Order',
+                'Add Location',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 25,
