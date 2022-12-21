@@ -1,6 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:janajal_clone/utils/icons.dart';
 import 'package:intl/intl.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
+
+void _handlePaymentSuccess(PaymentSuccessResponse response) {
+  Fluttertoast.showToast(
+    msg: 'SUCCESS PAYMENT: ${response.paymentId}',
+    timeInSecForIosWeb: 4,
+  );
+}
+
+void _handlePaymentError(PaymentFailureResponse response) {
+  Fluttertoast.showToast(
+    msg: 'ERROR HERE: ${response.code}-${response.message}',
+    timeInSecForIosWeb: 4,
+  );
+}
+
+void _handleExternalWallet(ExternalWalletResponse response) {
+  Fluttertoast.showToast(
+    msg: 'EXTERNAL WALLET: ${response.walletName}',
+    timeInSecForIosWeb: 4,
+  );
+}
 
 class MyDelivery extends StatefulWidget {
   const MyDelivery({Key? key}) : super(key: key);
@@ -10,46 +34,40 @@ class MyDelivery extends StatefulWidget {
 }
 
 class _MyDeliveryState extends State<MyDelivery> {
+  Razorpay? _razorpay;
   late SingleValueDropDownController _cnt;
   TextEditingController dateInput = TextEditingController();
-
-  Future<void> _showMyDialog() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Thank You!'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: const <Widget>[
-                Text('Your Order has been placed!'),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('Ok'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   @override
   void initState() {
     _cnt = SingleValueDropDownController();
     dateInput.text = "";
+    _razorpay = Razorpay();
+    _razorpay?.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay?.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorpay?.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
     super.initState();
   }
 
   void dispose() {
     _cnt.dispose();
     super.dispose();
+  }
+
+  void makePayment() async {
+    var options = {
+      'key': '',
+      'amount': 100,
+      'name': 'Janadhara',
+      'description': 'Water enterprises',
+      'prefill': {'contact': '8888888888', 'email': 'test@razorpay.com'}
+    };
+
+    try {
+      _razorpay?.open(options);
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -91,31 +109,27 @@ class _MyDeliveryState extends State<MyDelivery> {
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: TextField(
               controller: dateInput,
-              //editing controller of this TextField
               decoration: InputDecoration(
-                  icon: Icon(Icons.calendar_today), //icon of text field
-                  labelText: "Enter Date" //label text of field
-                  ),
+                icon: Icon(
+                  Icons.calendar_today,
+                ),
+                labelText: "Enter Date",
+              ),
               readOnly: true,
-              //set it true, so that user will not able to edit text
               onTap: () async {
                 DateTime? pickedDate = await showDatePicker(
                     context: context,
                     initialDate: DateTime.now(),
                     firstDate: DateTime(1950),
-                    //DateTime.now() - not to allow to choose before today.
                     lastDate: DateTime(2100));
 
                 if (pickedDate != null) {
-                  print(
-                      pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                  print(pickedDate);
                   String formattedDate =
                       DateFormat('yyyy-MM-dd').format(pickedDate);
-                  print(
-                      formattedDate); //formatted date output using intl package =>  2021-03-16
+                  print(formattedDate);
                   setState(() {
-                    dateInput.text =
-                        formattedDate; //set output date to TextField value.
+                    dateInput.text = formattedDate;
                   });
                 } else {}
               },
@@ -152,28 +166,42 @@ class _MyDeliveryState extends State<MyDelivery> {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 30,
           ),
-          Container(
-            margin: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0)),
-                elevation: 5.0,
-                shadowColor: Colors.black,
-                backgroundColor: Colors.blue[800],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              iconButton(
+                onpressed: 'gps',
+                icon: Icons.location_on_rounded,
+                heading: "Add GPS",
+                subheading: "location",
+                color: Colors.blueGrey,
               ),
-              onPressed: _showMyDialog,
-              child: Text(
-                'Place Order',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
+              Container(
+                margin: const EdgeInsets.fromLTRB(30, 10, 10, 10),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0)),
+                    elevation: 5.0,
+                    shadowColor: Colors.black,
+                    backgroundColor: Colors.blue[800],
+                  ),
+                  onPressed: () {
+                    makePayment();
+                  },
+                  child: Text(
+                    'Place Order',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                    ),
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
         ],
       ),

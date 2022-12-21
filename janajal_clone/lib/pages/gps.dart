@@ -10,6 +10,33 @@ class GpsLocation extends StatefulWidget {
 }
 
 class _GpsLocationState extends State<GpsLocation> {
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Location updated'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text('You can place your order now!'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   final _locationController = TextEditingController();
 
   Position? position;
@@ -84,6 +111,7 @@ class _GpsLocationState extends State<GpsLocation> {
               ),
               onPressed: () {
                 getCurrentLocation();
+                _showMyDialog();
               },
               child: Text(
                 'Add Location',
