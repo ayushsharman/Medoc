@@ -51,6 +51,7 @@ class _MyDeliveryState extends State<MyDelivery> {
 
   void dispose() {
     _cnt.dispose();
+    _razorpay?.clear();
     super.dispose();
   }
 
