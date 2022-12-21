@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 iconButton(
-                  onpressed: 'location',
+                  onpressed: 'gps',
                   icon: Icons.location_on_rounded,
                   heading: "Add GPS",
                   subheading: "location",

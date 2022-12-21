@@ -5,6 +5,7 @@ import 'package:janajal_clone/mainPage.dart';
 import 'package:janajal_clone/loginPages/newUser.dart';
 import 'package:janajal_clone/pages/delivery.dart';
 import 'package:janajal_clone/pages/faq.dart';
+import 'package:janajal_clone/pages/gps.dart';
 import 'package:janajal_clone/pages/home.dart';
 import 'package:janajal_clone/pages/location.dart';
 import 'package:janajal_clone/pages/order.dart';
@@ -29,6 +30,7 @@ Future main() async {
         'homePage': (context) => const HomePage(),
         'order': (context) => const OrderPage(),
         'location': (context) => const AddLocation(),
+        'gps': (context) => const GpsLocation(),
         'profile': (context) => const MyProfile(),
         'wallet': (context) => const AboutUs(),
         'delivery': (context) => const MyDelivery(),

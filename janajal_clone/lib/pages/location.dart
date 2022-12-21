@@ -1,6 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:dropdown_textfield/dropdown_textfield.dart';
 
 class AddLocation extends StatefulWidget {
   const AddLocation({Key? key}) : super(key: key);
@@ -10,32 +9,40 @@ class AddLocation extends StatefulWidget {
 }
 
 class _MyDeliveryState extends State<AddLocation> {
-  late SingleValueDropDownController _cnt;
-  TextEditingController dateInput = TextEditingController();
+  final _addressController = TextEditingController();
+  final _cityController = TextEditingController();
+  final _stateController = TextEditingController();
+  final _pinCodeController = TextEditingController();
 
-  Future<void> _showMyDialog() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Thank You!'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: const <Widget>[
-                Text('Your Order has been placed!'),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('Ok'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
+  Future addLocationdetails() async {
+    try {
+      addUserDetails(
+        _addressController.text,
+        _cityController.text.trim(),
+        _stateController.text.trim(),
+        int.parse(_pinCodeController.text.trim()),
+      );
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void dispose() {
+    _addressController.dispose();
+    _cityController.dispose();
+    _stateController.dispose();
+    _pinCodeController.dispose();
+    super.dispose();
+  }
+
+  Future addUserDetails(
+      String address, String city, String state, int pincode) async {
+    await FirebaseFirestore.instance.collection('users').add(
+      {
+        'address': address,
+        'city': city,
+        'state': state,
+        'pincode': pincode,
       },
     );
   }
@@ -66,6 +73,7 @@ class _MyDeliveryState extends State<AddLocation> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: TextField(
+              controller: _addressController,
               decoration: InputDecoration(
                   icon: Icon(Icons.add_location),
                   labelText: 'Address',
@@ -78,6 +86,7 @@ class _MyDeliveryState extends State<AddLocation> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: TextField(
+              controller: _cityController,
               decoration: InputDecoration(
                   icon: Icon(Icons.location_city),
                   labelText: 'City',
@@ -90,6 +99,7 @@ class _MyDeliveryState extends State<AddLocation> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: TextField(
+              controller: _stateController,
               decoration: InputDecoration(
                   icon: Icon(Icons.flag),
                   labelText: 'State',
@@ -102,8 +112,9 @@ class _MyDeliveryState extends State<AddLocation> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: TextField(
+              controller: _pinCodeController,
               decoration: InputDecoration(
-                  icon: Icon(Icons.pin_drop),
+                  icon: Icon(Icons.pin),
                   labelText: 'Pincode',
                   hintText: 'Enter your Pincode'),
             ),
@@ -122,7 +133,9 @@ class _MyDeliveryState extends State<AddLocation> {
                 shadowColor: Colors.black,
                 backgroundColor: Colors.blue[800],
               ),
-              onPressed: () {},
+              onPressed: () {
+                addLocationdetails();
+              },
               child: Text(
                 'Add Location',
                 style: TextStyle(

@@ -2,11 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import 'package:janajal_clone/mainPage.dart';
-import 'package:janajal_clone/pages/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:path_provider/path_provider.dart';
 
 class newUser extends StatefulWidget {
   const newUser({super.key});
