@@ -33,41 +33,68 @@ class _OrderPageState extends State<OrderPage> {
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 30, 10, 0),
-              child: Material(
-                elevation: 5,
-                shadowColor: Colors.black,
-                borderRadius: BorderRadius.circular(25),
-                color: Colors.blue[200],
-                child: TabBar(
-                  labelStyle: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  labelColor: Colors.white,
-                  indicatorColor: Colors.white,
-                  unselectedLabelColor: Colors.blue[900],
-                  tabs: [
-                    Tab(
-                      text: "Current",
+              child: Container(
+                child: Material(
+                  elevation: 5,
+                  shadowColor: Colors.black,
+                  borderRadius: BorderRadius.circular(25),
+                  color: Colors.blue[200],
+                  child: TabBar(
+                    labelStyle: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Tab(
-                      text: "Previous",
+                    labelColor: Colors.white,
+                    indicatorColor: Colors.white,
+                    unselectedLabelColor: Colors.blue[900],
+                    tabs: [
+                      Tab(
+                        text: "Current",
+                      ),
+                      Tab(
+                        text: "Previous",
+                      ),
+                      Tab(
+                        text: "Cancelled",
+                      ),
+                    ],
+                    indicator: RectangularIndicator(
+                      bottomLeftRadius: 25,
+                      topLeftRadius: 25,
+                      bottomRightRadius: 25,
+                      topRightRadius: 25,
+                      color: Color.fromARGB(255, 36, 1, 132),
+                      paintingStyle: PaintingStyle.fill,
                     ),
-                    Tab(
-                      text: "Cancelled",
-                    ),
-                  ],
-                  indicator: RectangularIndicator(
-                    bottomLeftRadius: 25,
-                    topLeftRadius: 25,
-                    bottomRightRadius: 25,
-                    topRightRadius: 25,
-                    color: Color.fromARGB(255, 36, 1, 132),
-                    paintingStyle: PaintingStyle.fill,
                   ),
                 ),
               ),
-            )
+            ),
+            Container(
+                height: 400,
+                child: TabBarView(children: <Widget>[
+                  Container(
+                    child: Center(
+                      child: Text('Display Tab 1',
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                  Container(
+                    child: Center(
+                      child: Text('Display Tab 2',
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                  Container(
+                    child: Center(
+                      child: Text('Display Tab 3',
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                ]))
           ],
         ),
         bottomNavigationBar: GNav(
