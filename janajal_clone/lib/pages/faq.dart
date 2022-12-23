@@ -27,7 +27,9 @@ class _MyFaqListState extends State<MyFaqList> {
           ),
         ),
       ),
-      body: Text("Kaam krte hain"),
+      body: Container(
+        child: Image.asset('assets/faq.png'),
+      ),
       bottomNavigationBar: GNav(
         padding: EdgeInsets.all(20),
         gap: 8,

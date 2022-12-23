@@ -208,11 +208,8 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Image.asset(
-                              'assets/rickshaw.png',
-                            ),
+                          child: Image.asset(
+                            'assets/rickshaw.png',
                           ),
                         ),
                       ),

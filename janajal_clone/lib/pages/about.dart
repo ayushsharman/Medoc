@@ -40,10 +40,11 @@ class _MyWalletState extends State<AboutUs> {
               vertical: 20,
             ),
             child: Text(
-              "We're Water Supply and Irrigation Systems based Industary located in New Delhi. Our main aim to provide Safe Drinking Water to people on cost to cost.",
+              "\"We're Water Supply and Irrigation Systems based Industary located in New Delhi. Our main aim is to provide Safe Drinking Water to people on cost to cost.\"",
               style: TextStyle(
                 color: Colors.blueGrey,
                 fontSize: 20,
+                fontStyle: FontStyle.italic,
               ),
             ),
           ),
@@ -104,6 +105,9 @@ class _MyWalletState extends State<AboutUs> {
                 fontSize: 20,
               ),
             ),
+          ),
+          Center(
+            child: Image.asset('assets/download.jpg'),
           ),
           SizedBox(
             height: 30,

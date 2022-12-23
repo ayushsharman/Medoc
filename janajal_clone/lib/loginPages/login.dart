@@ -2,8 +2,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:janajal_clone/loginPages/newUser.dart';
-import 'package:janajal_clone/mainPage.dart';
 
 class loginPage extends StatefulWidget {
   @override
@@ -11,13 +12,15 @@ class loginPage extends StatefulWidget {
 }
 
 class _LoginDemoState extends State<loginPage> {
-  Future<void> _showMyDialog() async {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  Future<void> _showMyDialog(String error) async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Wrong Details!'),
+          title: Text('$error'),
           content: SingleChildScrollView(
             child: ListBody(
               children: const <Widget>[
@@ -38,8 +41,57 @@ class _LoginDemoState extends State<loginPage> {
     );
   }
 
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser =
+        await GoogleSignIn(scopes: <String>["email"]).signIn();
+
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text("Logged In"),
+        content: const Text("Directing to the HomePage"),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, 'homePage');
+            },
+            child: Container(
+              color: Colors.blue[800],
+              padding: const EdgeInsets.all(14),
+              child: const Text(
+                "Ok",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
+  facebookLogin() async {
+    try {
+      final result =
+          await FacebookAuth.i.login(permissions: ['public_profile', 'email']);
+      if (result.status == LoginStatus.success) {
+        final userData = await FacebookAuth.i.getUserData();
+        print(userData);
+      }
+    } catch (error) {
+      String e = error.toString();
+      _showMyDialog(e);
+    }
+  }
 
   Future signIn() async {
     try {
@@ -48,7 +100,8 @@ class _LoginDemoState extends State<loginPage> {
         password: _passwordController.text.trim(),
       );
     } catch (e) {
-      _showMyDialog();
+      String error = e.toString();
+      _showMyDialog(error);
     }
   }
 
@@ -130,7 +183,6 @@ class _LoginDemoState extends State<loginPage> {
                     ),
                     onPressed: () async {
                       signIn();
-                      await Navigator.pushNamed(context, 'homePage');
                     },
                     child: Text(
                       'Login',
@@ -193,9 +245,8 @@ class _LoginDemoState extends State<loginPage> {
                         shadowColor: Colors.black,
                         backgroundColor: Colors.white,
                       ),
-                      onPressed: () async {
+                      onPressed: () {
                         signInWithGoogle();
-                        await Navigator.pushNamed(context, 'homePage');
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
