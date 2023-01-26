@@ -36,12 +36,14 @@ class MyDelivery extends StatefulWidget {
 class _MyDeliveryState extends State<MyDelivery> {
   Razorpay? _razorpay;
   late SingleValueDropDownController _cnt;
-  TextEditingController dateInput = TextEditingController();
+  TextEditingController _dateInputController = TextEditingController();
+  TextEditingController _quantityController = TextEditingController();
+  String selectedValue = "";
 
   @override
   void initState() {
     _cnt = SingleValueDropDownController();
-    dateInput.text = "";
+    _dateInputController.text = "";
     _razorpay = Razorpay();
     _razorpay?.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
     _razorpay?.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
@@ -52,6 +54,8 @@ class _MyDeliveryState extends State<MyDelivery> {
   void dispose() {
     _cnt.dispose();
     _razorpay?.clear();
+    _dateInputController.clear();
+    _quantityController.clear();
     super.dispose();
   }
 
@@ -97,6 +101,7 @@ class _MyDeliveryState extends State<MyDelivery> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: TextField(
+              controller: _quantityController,
               decoration: InputDecoration(
                   icon: Icon(Icons.water_drop),
                   labelText: 'Quantity',
@@ -109,7 +114,7 @@ class _MyDeliveryState extends State<MyDelivery> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: TextField(
-              controller: dateInput,
+              controller: _dateInputController,
               decoration: InputDecoration(
                 icon: Icon(
                   Icons.calendar_today,
@@ -130,7 +135,7 @@ class _MyDeliveryState extends State<MyDelivery> {
                       DateFormat('yyyy-MM-dd').format(pickedDate);
                   print(formattedDate);
                   setState(() {
-                    dateInput.text = formattedDate;
+                    _dateInputController.text = formattedDate;
                   });
                 } else {}
               },
@@ -158,12 +163,34 @@ class _MyDeliveryState extends State<MyDelivery> {
               },
               dropDownItemCount: 5,
               dropDownList: const [
-                DropDownValueModel(name: '7 AM - 9 AM', value: "7-9"),
-                DropDownValueModel(name: '9 AM - 11 AM', value: "9-11"),
-                DropDownValueModel(name: '11 AM - 2 PM', value: "11-2"),
-                DropDownValueModel(name: '2 PM - 5 PM', value: "2-5"),
-                DropDownValueModel(name: '5 PM - 7 PM', value: "5-7"),
+                DropDownValueModel(
+                  name: '7 AM - 9 AM',
+                  value: "7-9",
+                ),
+                DropDownValueModel(
+                  name: '9 AM - 11 AM',
+                  value: "9-11",
+                ),
+                DropDownValueModel(
+                  name: '11 AM - 2 PM',
+                  value: "11-2",
+                ),
+                DropDownValueModel(
+                  name: '2 PM - 5 PM',
+                  value: "2-5",
+                ),
+                DropDownValueModel(
+                  name: '5 PM - 7 PM',
+                  value: "5-7",
+                ),
               ],
+              onChanged: (value) {
+                setState(
+                  () {
+                    selectedValue = value;
+                  },
+                );
+              },
             ),
           ),
           SizedBox(
